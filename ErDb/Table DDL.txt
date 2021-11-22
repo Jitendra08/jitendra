@@ -1,0 +1,2497 @@
+--------------------------------------------------------
+--  DDL for Table ER_ACCOUNTING_PERIODS
+--------------------------------------------------------
+
+  CREATE TABLE "EREPOSIT"."ER_ACCOUNTING_PERIODS" 
+   (	"ER_ACCOUNTING_PERIODS_ID" NUMBER, 
+	"PERIOD_START" DATE, 
+	"PERIOD_END" DATE, 
+	"GC_PERIOD_MONTH_YEAR" VARCHAR2(7 BYTE), 
+	"PERIOD_NAME" VARCHAR2(30 BYTE), 
+	"GC_PERIOD_END_IND" VARCHAR2(1 BYTE) DEFAULT 'N', 
+	"FK_APPLICATION_ID" NUMBER, 
+	"FK_GC_ENTITY_ID" VARCHAR2(50 BYTE), 
+	"GC_SOURCE_KEY" VARCHAR2(255 BYTE), 
+	"ER_CREATED_DATE_TIME" DATE, 
+	"ER_PROGRAM_CREATED" VARCHAR2(60 BYTE), 
+	"ER_UPDATED_DATE_TIME" DATE, 
+	"ER_PROGRAM_UPDATED" VARCHAR2(60 BYTE), 
+	"GC_ACCOUNTING_PERIOD_ID" NUMBER(*,0), 
+	"LOCKED_IND" CHAR(1 BYTE), 
+	"GC_NEW_LOST_BUS_QTR_END_IND" VARCHAR2(1 BYTE), 
+	"GC_NEW_LOST_BUS_PERIOD_END_IND" VARCHAR2(1 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 524288 NEXT 524288 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "EXPER_TBS" ;
+--------------------------------------------------------
+--  DDL for Table ER_GC_USER
+--------------------------------------------------------
+
+  CREATE TABLE "EREPOSIT"."ER_GC_USER" 
+   (	"ER_GC_USER_ID" VARCHAR2(30 BYTE), 
+	"GC_USER_ID" VARCHAR2(100 BYTE), 
+	"FK_GC_USER_TYPE_CODE" VARCHAR2(35 BYTE), 
+	"GC_USER_FIRST_NAME" VARCHAR2(60 BYTE), 
+	"GC_USER_LAST_NAME" VARCHAR2(60 BYTE), 
+	"GC_USER_MIDDLE_NAME" VARCHAR2(30 BYTE), 
+	"GC_USER_EMAIL" VARCHAR2(60 BYTE), 
+	"ACTIVE_IND" VARCHAR2(1 BYTE) DEFAULT 'Y', 
+	"GC_USER_OFFICE_CODE" VARCHAR2(10 BYTE), 
+	"GC_USER_OFFICE_DSC" VARCHAR2(35 BYTE), 
+	"ER_CREATED_DATE_TIME" DATE, 
+	"ER_PROGRAM_CREATED" VARCHAR2(60 BYTE), 
+	"ER_UPDATED_DATE_TIME" DATE, 
+	"ER_PROGRAM_UPDATED" VARCHAR2(60 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 524288 NEXT 524288 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "EXPER_TBS" ;
+--------------------------------------------------------
+--  DDL for Table ER_GC_USER_ACCESS
+--------------------------------------------------------
+
+  CREATE TABLE "EREPOSIT"."ER_GC_USER_ACCESS" 
+   (	"ER_GC_USER_ACCESS_ID" NUMBER, 
+	"FK_ER_GC_USER_ID" VARCHAR2(30 BYTE), 
+	"FK_USER_ACCESS_TYPE_CODE" VARCHAR2(5 BYTE), 
+	"GC_ACCESS_VALUE_CODE" VARCHAR2(120 BYTE), 
+	"ER_CREATED_DATE_TIME" DATE, 
+	"ER_PROGRAM_CREATED" VARCHAR2(60 BYTE), 
+	"ER_UPDATED_DATE_TIME" DATE, 
+	"ER_PROGRAM_UPDATED" VARCHAR2(60 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 524288 NEXT 524288 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "EXPER_TBS" ;
+--------------------------------------------------------
+--  DDL for Table ER_TP_REFERENCES
+--------------------------------------------------------
+
+  CREATE TABLE "EREPOSIT"."ER_TP_REFERENCES" 
+   (	"TP_REFERENCE" VARCHAR2(35 BYTE), 
+	"GC_REFERENCE_TYPE" VARCHAR2(5 BYTE), 
+	"NAME" VARCHAR2(120 BYTE), 
+	"SHORT_NAME" VARCHAR2(10 BYTE), 
+	"ACTIVE_IND" VARCHAR2(1 BYTE), 
+	"FK_APPLICATION_ID" NUMBER, 
+	"FK_SOURCE_TP_ID" NUMBER, 
+	"ER_CREATED_DATE_TIME" DATE, 
+	"ER_PROGRAM_CREATED" VARCHAR2(60 BYTE), 
+	"ER_UPDATED_DATE_TIME" DATE, 
+	"ER_PROGRAM_UPDATED" VARCHAR2(60 BYTE), 
+	"GC_SOURCE_CREATED_DATE_TIME" DATE, 
+	"GC_SOURCE_UPDATED_DATE_TIME" DATE
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 524288 NEXT 524288 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "EXPER_TBS" ;
+--------------------------------------------------------
+--  DDL for Index ER_ACCOUNTING_PERIODS_IDX01
+--------------------------------------------------------
+
+  CREATE INDEX "EREPOSIT"."ER_ACCOUNTING_PERIODS_IDX01" ON "EREPOSIT"."ER_ACCOUNTING_PERIODS" ("FK_APPLICATION_ID", "FK_GC_ENTITY_ID", "ER_ACCOUNTING_PERIODS_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" 
+  PARALLEL 8 ;
+--------------------------------------------------------
+--  DDL for Index ER_ACCOUNTING_PERIODS_IDX02
+--------------------------------------------------------
+
+  CREATE INDEX "EREPOSIT"."ER_ACCOUNTING_PERIODS_IDX02" ON "EREPOSIT"."ER_ACCOUNTING_PERIODS" ("FK_APPLICATION_ID", "FK_GC_ENTITY_ID", "PERIOD_START", "PERIOD_END") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" 
+  PARALLEL 8 ;
+--------------------------------------------------------
+--  DDL for Index PK_ER_ACCOUNTING_PERIODS
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "EREPOSIT"."PK_ER_ACCOUNTING_PERIODS" ON "EREPOSIT"."ER_ACCOUNTING_PERIODS" ("ER_ACCOUNTING_PERIODS_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 524288 NEXT 524288 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "EXPER_TBS" ;
+--------------------------------------------------------
+--  DDL for Index ER_GC_USER_UK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "EREPOSIT"."ER_GC_USER_UK" ON "EREPOSIT"."ER_GC_USER" ("GC_USER_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 524288 NEXT 524288 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "EXPER_TBS" ;
+--------------------------------------------------------
+--  DDL for Index PK_ER_GC_USER
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "EREPOSIT"."PK_ER_GC_USER" ON "EREPOSIT"."ER_GC_USER" ("ER_GC_USER_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 524288 NEXT 524288 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "EXPER_TBS" ;
+--------------------------------------------------------
+--  DDL for Index REFER_GC_USER70_IX
+--------------------------------------------------------
+
+  CREATE INDEX "EREPOSIT"."REFER_GC_USER70_IX" ON "EREPOSIT"."ER_GC_USER_ACCESS" ("FK_ER_GC_USER_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "EREPOSIT_IDX_TBS" 
+  PARALLEL 5 ;
+--------------------------------------------------------
+--  DDL for Index PK_ER_GC_USER_ACCESS
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "EREPOSIT"."PK_ER_GC_USER_ACCESS" ON "EREPOSIT"."ER_GC_USER_ACCESS" ("ER_GC_USER_ACCESS_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 524288 NEXT 524288 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "EXPER_TBS" ;
+--------------------------------------------------------
+--  DDL for Index PK_ER_TP_REFERENCES
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "EREPOSIT"."PK_ER_TP_REFERENCES" ON "EREPOSIT"."ER_TP_REFERENCES" ("TP_REFERENCE", "GC_REFERENCE_TYPE") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 524288 NEXT 524288 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "EXPER_TBS" ;
+--------------------------------------------------------
+--  DDL for Index TP_REF_FK_SRC_TP_ID
+--------------------------------------------------------
+
+  CREATE INDEX "EREPOSIT"."TP_REF_FK_SRC_TP_ID" ON "EREPOSIT"."ER_TP_REFERENCES" ("FK_SOURCE_TP_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 524288 NEXT 524288 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "EXPER_TBS" ;
+--------------------------------------------------------
+--  DDL for Index IDX_REF_SOURCE_TP_ID
+--------------------------------------------------------
+
+  CREATE INDEX "EREPOSIT"."IDX_REF_SOURCE_TP_ID" ON "EREPOSIT"."ER_TP_REFERENCES" ("GC_REFERENCE_TYPE", "FK_SOURCE_TP_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 524288 NEXT 524288 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "EXPER_TBS" ;
+--------------------------------------------------------
+--  DDL for Index IDX_GC_REF_TYPE_TP_REF
+--------------------------------------------------------
+
+  CREATE INDEX "EREPOSIT"."IDX_GC_REF_TYPE_TP_REF" ON "EREPOSIT"."ER_TP_REFERENCES" ("GC_REFERENCE_TYPE", "TP_REFERENCE") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 524288 NEXT 524288 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "EXPER_TBS" ;
+--------------------------------------------------------
+--  DDL for Trigger TRG_ER_ACCT_PERIODS_AUD
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "EREPOSIT"."TRG_ER_ACCT_PERIODS_AUD" 
+BEFORE DELETE OR INSERT OR UPDATE
+ON ereposit.ER_ACCOUNTING_PERIODS
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+DECLARE
+    l_operation varchar2(1);
+    l_bi varchar2(4000);
+    l_ai varchar2(4000);
+    l_start_sep varchar2(4) := '^#';
+    l_end_sep varchar2(4) := '~#';
+    l_key_val_sep varchar2(4) := ': ';
+    l_table_name varchar2(30);
+    l_host varchar2(100);
+    l_module varchar2(60);
+    l_os_user varchar2(30);
+    l_sess_user varchar2(30);  l_pk_id number;	l_current_sid number;
+    l_schema_name varchar2(30); l_curr_date date; l_current_sql varchar2(4000);
+BEGIN
+	--dbms_output.enable( 1000000);
+	l_table_name :='ER_ACCOUNTING_PERIODS';		l_schema_name :='EREPOSIT';  l_curr_date := sysdate;
+	l_host := SYS_CONTEXT ('userenv','host');
+	l_module := SYS_CONTEXT ('userenv','module');
+	l_os_user := SYS_CONTEXT ('userenv','os_user');
+	l_sess_user := SYS_CONTEXT ('userenv','session_user');
+	l_current_sql := SYS_CONTEXT ('userenv','current_sql');
+	l_current_sid := SYS_CONTEXT ('userenv','sid');
+
+    if ( INSERTING ) then
+		l_operation := 'I';
+		l_pk_id := :NEW.ER_ACCOUNTING_PERIODS_ID;
+        l_bi := NULL;
+        l_ai := 'ER_ACCOUNTING_PERIODS_ID' || l_key_val_sep || :NEW.ER_ACCOUNTING_PERIODS_ID || l_end_sep
+			|| 'PERIOD_START' || l_key_val_sep || :NEW.PERIOD_START || l_end_sep
+			|| 'PERIOD_END' || l_key_val_sep || :NEW.PERIOD_END || l_end_sep
+			|| 'GC_PERIOD_MONTH_YEAR' || l_key_val_sep || :NEW.GC_PERIOD_MONTH_YEAR || l_end_sep
+			|| 'PERIOD_NAME' || l_key_val_sep || nvl(:NEW.PERIOD_NAME,' ') || l_end_sep
+			|| 'GC_PERIOD_END_IND' || l_key_val_sep || nvl(:NEW.GC_PERIOD_END_IND,' ') || l_end_sep
+			|| 'FK_APPLICATION_ID' || l_key_val_sep || :NEW.FK_APPLICATION_ID || l_end_sep
+			|| 'FK_GC_ENTITY_ID' || l_key_val_sep || :NEW.FK_GC_ENTITY_ID || l_end_sep
+			|| 'GC_SOURCE_KEY' || l_key_val_sep || nvl(:NEW.GC_SOURCE_KEY,' ') || l_end_sep
+			|| 'ER_CREATED_DATE_TIME' || l_key_val_sep || :NEW.ER_CREATED_DATE_TIME || l_end_sep
+			|| 'ER_PROGRAM_CREATED' || l_key_val_sep || :NEW.ER_PROGRAM_CREATED || l_end_sep
+			|| 'ER_UPDATED_DATE_TIME' || l_key_val_sep || :NEW.ER_UPDATED_DATE_TIME || l_end_sep
+			|| 'ER_PROGRAM_UPDATED' || l_key_val_sep || :NEW.ER_PROGRAM_UPDATED || l_end_sep
+			|| 'GC_ACCOUNTING_PERIOD_ID' || l_key_val_sep || :NEW.GC_ACCOUNTING_PERIOD_ID || l_end_sep
+			|| 'LOCKED_IND' || l_key_val_sep || nvl(:NEW.LOCKED_IND,' ') || l_end_sep
+			|| 'GC_NEW_LOST_BUS_QTR_END_IND' || l_key_val_sep || nvl(:NEW.GC_NEW_LOST_BUS_QTR_END_IND,' ') || l_end_sep
+			|| 'GC_NEW_LOST_BUS_PERIOD_END_IND' || l_key_val_sep || nvl(:NEW.GC_NEW_LOST_BUS_PERIOD_END_IND,' ') || l_end_sep
+			;
+
+    elsif ( UPDATING ) then
+		l_operation := 'U';
+		l_pk_id := :NEW.ER_ACCOUNTING_PERIODS_ID;
+        l_ai := 'ER_ACCOUNTING_PERIODS_ID' || l_key_val_sep || :NEW.ER_ACCOUNTING_PERIODS_ID || l_end_sep
+			|| 'PERIOD_START' || l_key_val_sep || :NEW.PERIOD_START || l_end_sep
+			|| 'PERIOD_END' || l_key_val_sep || :NEW.PERIOD_END || l_end_sep
+			|| 'GC_PERIOD_MONTH_YEAR' || l_key_val_sep || :NEW.GC_PERIOD_MONTH_YEAR || l_end_sep
+			|| 'PERIOD_NAME' || l_key_val_sep || nvl(:NEW.PERIOD_NAME,' ') || l_end_sep
+			|| 'GC_PERIOD_END_IND' || l_key_val_sep || nvl(:NEW.GC_PERIOD_END_IND,' ') || l_end_sep
+			|| 'FK_APPLICATION_ID' || l_key_val_sep || :NEW.FK_APPLICATION_ID || l_end_sep
+			|| 'FK_GC_ENTITY_ID' || l_key_val_sep || :NEW.FK_GC_ENTITY_ID || l_end_sep
+			|| 'GC_SOURCE_KEY' || l_key_val_sep || nvl(:NEW.GC_SOURCE_KEY,' ') || l_end_sep
+			|| 'ER_CREATED_DATE_TIME' || l_key_val_sep || :NEW.ER_CREATED_DATE_TIME || l_end_sep
+			|| 'ER_PROGRAM_CREATED' || l_key_val_sep || :NEW.ER_PROGRAM_CREATED || l_end_sep
+			|| 'ER_UPDATED_DATE_TIME' || l_key_val_sep || :NEW.ER_UPDATED_DATE_TIME || l_end_sep
+			|| 'ER_PROGRAM_UPDATED' || l_key_val_sep || :NEW.ER_PROGRAM_UPDATED || l_end_sep
+			|| 'GC_ACCOUNTING_PERIOD_ID' || l_key_val_sep || :NEW.GC_ACCOUNTING_PERIOD_ID || l_end_sep
+			|| 'LOCKED_IND' || l_key_val_sep || nvl(:NEW.LOCKED_IND,' ') || l_end_sep
+			|| 'GC_NEW_LOST_BUS_QTR_END_IND' || l_key_val_sep || nvl(:NEW.GC_NEW_LOST_BUS_QTR_END_IND,' ') || l_end_sep
+			|| 'GC_NEW_LOST_BUS_PERIOD_END_IND' || l_key_val_sep || nvl(:NEW.GC_NEW_LOST_BUS_PERIOD_END_IND,' ') || l_end_sep
+			;
+        l_bi := 'ER_ACCOUNTING_PERIODS_ID' || l_key_val_sep || :OLD.ER_ACCOUNTING_PERIODS_ID || l_end_sep
+			|| 'PERIOD_START' || l_key_val_sep || :OLD.PERIOD_START || l_end_sep
+			|| 'PERIOD_END' || l_key_val_sep || :OLD.PERIOD_END || l_end_sep
+			|| 'GC_PERIOD_MONTH_YEAR' || l_key_val_sep || :OLD.GC_PERIOD_MONTH_YEAR || l_end_sep
+			|| 'PERIOD_NAME' || l_key_val_sep || nvl(:OLD.PERIOD_NAME,' ') || l_end_sep
+			|| 'GC_PERIOD_END_IND' || l_key_val_sep || nvl(:OLD.GC_PERIOD_END_IND,' ') || l_end_sep
+			|| 'FK_APPLICATION_ID' || l_key_val_sep || :OLD.FK_APPLICATION_ID || l_end_sep
+			|| 'FK_GC_ENTITY_ID' || l_key_val_sep || :OLD.FK_GC_ENTITY_ID || l_end_sep
+			|| 'GC_SOURCE_KEY' || l_key_val_sep || nvl(:OLD.GC_SOURCE_KEY,' ') || l_end_sep
+			|| 'ER_CREATED_DATE_TIME' || l_key_val_sep || :OLD.ER_CREATED_DATE_TIME || l_end_sep
+			|| 'ER_PROGRAM_CREATED' || l_key_val_sep || :OLD.ER_PROGRAM_CREATED || l_end_sep
+			|| 'ER_UPDATED_DATE_TIME' || l_key_val_sep || :OLD.ER_UPDATED_DATE_TIME || l_end_sep
+			|| 'ER_PROGRAM_UPDATED' || l_key_val_sep || :OLD.ER_PROGRAM_UPDATED || l_end_sep
+			|| 'GC_ACCOUNTING_PERIOD_ID' || l_key_val_sep || :OLD.GC_ACCOUNTING_PERIOD_ID || l_end_sep
+			|| 'LOCKED_IND' || l_key_val_sep || nvl(:OLD.LOCKED_IND,' ') || l_end_sep
+			|| 'GC_NEW_LOST_BUS_QTR_END_IND' || l_key_val_sep || nvl(:OLD.GC_NEW_LOST_BUS_QTR_END_IND,' ') || l_end_sep
+			|| 'GC_NEW_LOST_BUS_PERIOD_END_IND' || l_key_val_sep || nvl(:OLD.GC_NEW_LOST_BUS_PERIOD_END_IND,' ') || l_end_sep
+			;
+
+    elsif ( DELETING ) then
+
+        l_operation := 'D';
+		l_pk_id := :OLD.ER_ACCOUNTING_PERIODS_ID;
+        l_ai := NULL;
+        l_bi := 'ER_ACCOUNTING_PERIODS_ID' || l_key_val_sep || :OLD.ER_ACCOUNTING_PERIODS_ID || l_end_sep
+			|| 'PERIOD_START' || l_key_val_sep || :OLD.PERIOD_START || l_end_sep
+			|| 'PERIOD_END' || l_key_val_sep || :OLD.PERIOD_END || l_end_sep
+			|| 'GC_PERIOD_MONTH_YEAR' || l_key_val_sep || :OLD.GC_PERIOD_MONTH_YEAR || l_end_sep
+			|| 'PERIOD_NAME' || l_key_val_sep || nvl(:OLD.PERIOD_NAME,' ') || l_end_sep
+			|| 'GC_PERIOD_END_IND' || l_key_val_sep || nvl(:OLD.GC_PERIOD_END_IND,' ') || l_end_sep
+			|| 'FK_APPLICATION_ID' || l_key_val_sep || :OLD.FK_APPLICATION_ID || l_end_sep
+			|| 'FK_GC_ENTITY_ID' || l_key_val_sep || :OLD.FK_GC_ENTITY_ID || l_end_sep
+			|| 'GC_SOURCE_KEY' || l_key_val_sep || nvl(:OLD.GC_SOURCE_KEY,' ') || l_end_sep
+			|| 'ER_CREATED_DATE_TIME' || l_key_val_sep || :OLD.ER_CREATED_DATE_TIME || l_end_sep
+			|| 'ER_PROGRAM_CREATED' || l_key_val_sep || :OLD.ER_PROGRAM_CREATED || l_end_sep
+			|| 'ER_UPDATED_DATE_TIME' || l_key_val_sep || :OLD.ER_UPDATED_DATE_TIME || l_end_sep
+			|| 'ER_PROGRAM_UPDATED' || l_key_val_sep || :OLD.ER_PROGRAM_UPDATED || l_end_sep
+			|| 'GC_ACCOUNTING_PERIOD_ID' || l_key_val_sep || :OLD.GC_ACCOUNTING_PERIOD_ID || l_end_sep
+			|| 'LOCKED_IND' || l_key_val_sep || nvl(:OLD.LOCKED_IND,' ') || l_end_sep
+			|| 'GC_NEW_LOST_BUS_QTR_END_IND' || l_key_val_sep || nvl(:OLD.GC_NEW_LOST_BUS_QTR_END_IND,' ') || l_end_sep
+			|| 'GC_NEW_LOST_BUS_PERIOD_END_IND' || l_key_val_sep || nvl(:OLD.GC_NEW_LOST_BUS_PERIOD_END_IND,' ') || l_end_sep
+			;
+    end if;
+	--dbms_output.put_line( 'l_operation :'||l_operation);
+	--dbms_output.put_line( 'l_os_user :'||l_os_user);
+	--dbms_output.put_line( 'l_sess_user :'||l_sess_user);
+	--dbms_output.put_line( 'l_module :'||l_module);
+	--dbms_output.put_line( 'in Trg: l_curr_date :'||l_curr_date);
+	--dbms_output.put_line( 'l_bi :'||l_bi);
+	--dbms_output.put_line( 'l_ai :'||l_ai);
+	--dbms_output.put_line( 'l_schema_name :'||l_schema_name);
+    insert into ereposit_staging.er_audits
+      (table_name, pk_id, operation_ind, os_user, session_user, module, host, operation_date, before_image, after_image, schema_name,current_sql, current_sid )
+      values
+      ( l_table_name,l_pk_id, l_operation, l_os_user, l_sess_user, l_module, l_host, l_curr_date, l_bi, l_ai, l_schema_name,l_current_sql, l_current_sid );
+
+EXCEPTION
+    when OTHERS then
+        raise_application_error( -20001,'TRG_er_acct_periods_AUD failed with'|| SQLERRM( SQLCODE ));
+END;
+/
+ALTER TRIGGER "EREPOSIT"."TRG_ER_ACCT_PERIODS_AUD" ENABLE;
+--------------------------------------------------------
+--  Constraints for Table ER_ACCOUNTING_PERIODS
+--------------------------------------------------------
+
+  ALTER TABLE "EREPOSIT"."ER_ACCOUNTING_PERIODS" ADD CONSTRAINT "PK_ER_ACCOUNTING_PERIODS" PRIMARY KEY ("ER_ACCOUNTING_PERIODS_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 524288 NEXT 524288 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "EXPER_TBS"  ENABLE;
+  ALTER TABLE "EREPOSIT"."ER_ACCOUNTING_PERIODS" MODIFY ("ER_PROGRAM_CREATED" NOT NULL ENABLE);
+  ALTER TABLE "EREPOSIT"."ER_ACCOUNTING_PERIODS" MODIFY ("ER_CREATED_DATE_TIME" NOT NULL ENABLE);
+  ALTER TABLE "EREPOSIT"."ER_ACCOUNTING_PERIODS" MODIFY ("FK_GC_ENTITY_ID" NOT NULL ENABLE);
+  ALTER TABLE "EREPOSIT"."ER_ACCOUNTING_PERIODS" MODIFY ("FK_APPLICATION_ID" NOT NULL ENABLE);
+  ALTER TABLE "EREPOSIT"."ER_ACCOUNTING_PERIODS" MODIFY ("GC_PERIOD_MONTH_YEAR" NOT NULL ENABLE);
+  ALTER TABLE "EREPOSIT"."ER_ACCOUNTING_PERIODS" MODIFY ("PERIOD_END" NOT NULL ENABLE);
+  ALTER TABLE "EREPOSIT"."ER_ACCOUNTING_PERIODS" MODIFY ("PERIOD_START" NOT NULL ENABLE);
+  ALTER TABLE "EREPOSIT"."ER_ACCOUNTING_PERIODS" MODIFY ("ER_ACCOUNTING_PERIODS_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table ER_GC_USER
+--------------------------------------------------------
+
+  ALTER TABLE "EREPOSIT"."ER_GC_USER" ADD CONSTRAINT "ER_GC_USER_UK" UNIQUE ("GC_USER_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 524288 NEXT 524288 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "EXPER_TBS"  ENABLE;
+  ALTER TABLE "EREPOSIT"."ER_GC_USER" ADD CONSTRAINT "PK_ER_GC_USER" PRIMARY KEY ("ER_GC_USER_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 524288 NEXT 524288 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "EXPER_TBS"  ENABLE;
+  ALTER TABLE "EREPOSIT"."ER_GC_USER" MODIFY ("ACTIVE_IND" NOT NULL ENABLE);
+  ALTER TABLE "EREPOSIT"."ER_GC_USER" MODIFY ("GC_USER_LAST_NAME" NOT NULL ENABLE);
+  ALTER TABLE "EREPOSIT"."ER_GC_USER" MODIFY ("GC_USER_FIRST_NAME" NOT NULL ENABLE);
+  ALTER TABLE "EREPOSIT"."ER_GC_USER" MODIFY ("FK_GC_USER_TYPE_CODE" NOT NULL ENABLE);
+  ALTER TABLE "EREPOSIT"."ER_GC_USER" MODIFY ("GC_USER_ID" NOT NULL ENABLE);
+  ALTER TABLE "EREPOSIT"."ER_GC_USER" MODIFY ("ER_GC_USER_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table ER_GC_USER_ACCESS
+--------------------------------------------------------
+
+  ALTER TABLE "EREPOSIT"."ER_GC_USER_ACCESS" ADD CONSTRAINT "PK_ER_GC_USER_ACCESS" PRIMARY KEY ("ER_GC_USER_ACCESS_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 524288 NEXT 524288 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "EXPER_TBS"  ENABLE;
+  ALTER TABLE "EREPOSIT"."ER_GC_USER_ACCESS" MODIFY ("GC_ACCESS_VALUE_CODE" NOT NULL ENABLE);
+  ALTER TABLE "EREPOSIT"."ER_GC_USER_ACCESS" MODIFY ("FK_USER_ACCESS_TYPE_CODE" NOT NULL ENABLE);
+  ALTER TABLE "EREPOSIT"."ER_GC_USER_ACCESS" MODIFY ("FK_ER_GC_USER_ID" NOT NULL ENABLE);
+  ALTER TABLE "EREPOSIT"."ER_GC_USER_ACCESS" MODIFY ("ER_GC_USER_ACCESS_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table ER_TP_REFERENCES
+--------------------------------------------------------
+
+  ALTER TABLE "EREPOSIT"."ER_TP_REFERENCES" MODIFY ("FK_SOURCE_TP_ID" NOT NULL ENABLE);
+  ALTER TABLE "EREPOSIT"."ER_TP_REFERENCES" MODIFY ("FK_APPLICATION_ID" NOT NULL ENABLE);
+  ALTER TABLE "EREPOSIT"."ER_TP_REFERENCES" MODIFY ("GC_REFERENCE_TYPE" NOT NULL ENABLE);
+  ALTER TABLE "EREPOSIT"."ER_TP_REFERENCES" MODIFY ("TP_REFERENCE" NOT NULL ENABLE);
+  ALTER TABLE "EREPOSIT"."ER_TP_REFERENCES" ADD CONSTRAINT "PK_ER_TP_REFERENCES" PRIMARY KEY ("TP_REFERENCE", "GC_REFERENCE_TYPE")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 524288 NEXT 524288 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "EXPER_TBS"  ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table ER_GC_USER_ACCESS
+--------------------------------------------------------
+
+  ALTER TABLE "EREPOSIT"."ER_GC_USER_ACCESS" ADD CONSTRAINT "FK_USER_ACCESS_TYPE" FOREIGN KEY ("FK_USER_ACCESS_TYPE_CODE")
+	  REFERENCES "EREPOSIT"."ER_GC_USER_ACCESS_TYPE" ("ER_USER_ACCESS_TYPE_CODE") ENABLE;
+  ALTER TABLE "EREPOSIT"."ER_GC_USER_ACCESS" ADD CONSTRAINT "REFER_GC_USER70" FOREIGN KEY ("FK_ER_GC_USER_ID")
+	  REFERENCES "EREPOSIT"."ER_GC_USER" ("ER_GC_USER_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table ER_TP_REFERENCES
+--------------------------------------------------------
+
+  ALTER TABLE "EREPOSIT"."ER_TP_REFERENCES" ADD CONSTRAINT "FK_ER_TP_INFO" FOREIGN KEY ("FK_SOURCE_TP_ID")
+	  REFERENCES "EREPOSIT"."ER_TP_INFO" ("SOURCE_TP_ID") ENABLE;
+
+
+--------------------------------------------------------
+--  DDL for Table BUDGET_FACT
+--------------------------------------------------------
+
+  CREATE TABLE "REVENUE_DM"."BUDGET_FACT" 
+   (	"BUDGET_FACT_ID" NUMBER, 
+	"CONTRACT_DIM_ID" NUMBER, 
+	"SOURCE_DIM_ID" NUMBER, 
+	"REVENUE_DATE_DIM_ID" NUMBER, 
+	"CEDENT_DIM_ID" NUMBER, 
+	"BUDGET_VERSION_DIM_ID" NUMBER, 
+	"PROFIT_CENTER_DIM_ID" NUMBER, 
+	"ER_HYPERION_STAGE_2_ID" NUMBER, 
+	"BUDGET_AMT_USD" NUMBER, 
+	"CONTRACT_MAPPED" VARCHAR2(1 BYTE), 
+	"CREATED_DT" DATE, 
+	"UPDATE_DT" DATE, 
+	"REVENUE_TYPE_ID" CHAR(10 BYTE), 
+	"TRANSACTION_DIM_ID" NUMBER, 
+	"BUSINESS_CLASSIFICATION_DIM_ID" NUMBER, 
+	"CONTRACT_CLASSIFICATION_DIM_ID" NUMBER
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS NOLOGGING
+  STORAGE(INITIAL 1048576 NEXT 2097152 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_TBS_2" ;
+--------------------------------------------------------
+--  DDL for Table BUSINESS_CLASSIFICATION_DIM
+--------------------------------------------------------
+
+  CREATE TABLE "REVENUE_DM"."BUSINESS_CLASSIFICATION_DIM" 
+   (	"BUSINESS_CLASSIFICATION_DIM_ID" NUMBER, 
+	"MAJOR_CLASS_CODE" VARCHAR2(35 BYTE), 
+	"MAJOR_CLASS_DSC" VARCHAR2(65 BYTE), 
+	"BUSNESS_CLASS_CODE" VARCHAR2(35 BYTE), 
+	"BUSNESS_CLASS_DSC" VARCHAR2(65 BYTE), 
+	"CREATED_DT" DATE, 
+	"UPDATE_DT" DATE, 
+	"BUSINESS_CATEGORY_CODE" VARCHAR2(6 BYTE), 
+	"BUSINESS_CATEGORY_DSC" VARCHAR2(30 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS NOLOGGING
+  STORAGE(INITIAL 2097152 NEXT 2097152 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_TBS_2" ;
+
+   COMMENT ON COLUMN "REVENUE_DM"."BUSINESS_CLASSIFICATION_DIM"."BUSINESS_CLASSIFICATION_DIM_ID" IS 'Primary Key to table BUSINESS_CLASSIFICATION_DIM';
+   COMMENT ON COLUMN "REVENUE_DM"."BUSINESS_CLASSIFICATION_DIM"."MAJOR_CLASS_CODE" IS 'This code indentifies the group to which a  class of business code is belong.   (e.g. Aviation). ';
+   COMMENT ON COLUMN "REVENUE_DM"."BUSINESS_CLASSIFICATION_DIM"."MAJOR_CLASS_DSC" IS 'Textual description of the group to which a  class of business code is belong.  The Major Class are  based on the ER Revenue dimensions. (e.g. Aviation ). ';
+   COMMENT ON COLUMN "REVENUE_DM"."BUSINESS_CLASSIFICATION_DIM"."BUSNESS_CLASS_CODE" IS 'The class of business code used to describe the scope of coverage of insurance or reinsurance for the selected contracts, premiums and claims.  Example: The Business Class are  based on the ER Revenue dimensions. (e.g. Aviation hull). ';
+   COMMENT ON COLUMN "REVENUE_DM"."BUSINESS_CLASSIFICATION_DIM"."BUSNESS_CLASS_DSC" IS 'Textual description of the class of business (term used to describe the scope of coverage of insurance or reinsurance for the selected contracts, premiums and claims.  Example: The Business Class are  based on the ER Revenue dimensions. (e.g. Aviation hull). ';
+   COMMENT ON COLUMN "REVENUE_DM"."BUSINESS_CLASSIFICATION_DIM"."CREATED_DT" IS 'Date that the record was created in the datamart';
+   COMMENT ON COLUMN "REVENUE_DM"."BUSINESS_CLASSIFICATION_DIM"."UPDATE_DT" IS 'Date that the record was updated in the datamart';
+--------------------------------------------------------
+--  DDL for Table CONTRACT_DIM
+--------------------------------------------------------
+
+  CREATE TABLE "REVENUE_DM"."CONTRACT_DIM" 
+   (	"CONTRACT_DIM_ID" NUMBER, 
+	"UNDER_WRITING_YEAR" NUMBER(10,0), 
+	"PROGRAM_SUM_REF" VARCHAR2(65 BYTE), 
+	"PROGRAM_SUM_DSC" VARCHAR2(260 BYTE), 
+	"CONTRACT_SUM_REF" VARCHAR2(65 BYTE), 
+	"CONTRAC_SUM_DSC" VARCHAR2(260 BYTE), 
+	"CONTRACT_REF" VARCHAR2(35 BYTE), 
+	"CONTRACT_DSC" VARCHAR2(260 BYTE), 
+	"CONTRACT_EFF_DT" DATE, 
+	"CONTRACT_EXPR_DT" DATE, 
+	"ER_CONTRACT_ID" NUMBER, 
+	"CONTRACT_PLACING_OFFICE" VARCHAR2(65 BYTE), 
+	"CONTRACT_PLACING_OFFICE_DSC" VARCHAR2(250 BYTE), 
+	"DD_ER_PROGRAM_ID" NUMBER, 
+	"DD_ER_SECTION_ID" NUMBER, 
+	"DD_APPLICATION_ID" NUMBER, 
+	"DD_GC_ENTITY_ID" VARCHAR2(50 BYTE), 
+	"PROGRAM_CREATED" VARCHAR2(60 BYTE), 
+	"PROGRAM_UPDATED" VARCHAR2(60 BYTE), 
+	"CREATED_DT" DATE, 
+	"UPDATED_DT" DATE, 
+	"GC_OUR_CONTRACT_REF" VARCHAR2(35 BYTE), 
+	"IMPACT_CURR_CODE" VARCHAR2(3 BYTE), 
+	"CEDENT_CONTRACT_REFERENCE" VARCHAR2(35 BYTE), 
+	"PROGRAM_RENEWED_FROM_PROG_ID" VARCHAR2(65 BYTE), 
+	"PROGRAM_RENEWED_TO_PROG_ID" VARCHAR2(65 BYTE), 
+	"CONTRACT_RENEWED_FROM_CONT_ID" VARCHAR2(65 BYTE), 
+	"CONTRACT_RENEWED_TO_CONT_ID" VARCHAR2(65 BYTE), 
+	"GC_LEGACY_CONTRACT_REFERENCE" VARCHAR2(35 BYTE), 
+	"CONTRACT_SEQUENCE_GROUP_ID" NUMBER DEFAULT 0, 
+	"CONTRACT_SEQUENCE_NUMBER" NUMBER(10,0), 
+	"CONTRACT_STATUS" VARCHAR2(10 BYTE) DEFAULT ' ', 
+	"CONTRACT_STATUS_DSC" VARCHAR2(260 BYTE) DEFAULT ' ', 
+	"WHOLESALE_SUPL_CONT_IND" VARCHAR2(1 BYTE), 
+	"CREATED_USER" VARCHAR2(10 BYTE), 
+	"UPDATE_USER" VARCHAR2(10 BYTE), 
+	"PROGRAM_SEQUENCE_GROUP_ID" NUMBER, 
+	"PROGRAM_SEQUENCE_NUMBER" NUMBER, 
+	"SECTION_NUMBER" NUMBER, 
+	"BUDGET_REF" VARCHAR2(100 BYTE), 
+	"BUDGET_DSC" VARCHAR2(300 BYTE), 
+	"INSURED_NAME" VARCHAR2(255 BYTE), 
+	"DD_APPLICATION_ID_LEGACY" NUMBER, 
+	"MATCHED_TO_CONTRACT_REF" VARCHAR2(35 BYTE), 
+	"CONTRACT_RISK_EFF_DT" DATE, 
+	"CONTRACT_RISK_EXP_DT" DATE
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS NOLOGGING
+  STORAGE(INITIAL 2097152 NEXT 2097152 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_TBS_2" ;
+
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."CONTRACT_DIM_ID" IS 'Primary Key to table CONTRACT_DIM';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."UNDER_WRITING_YEAR" IS 'Year in which the contract is underwritten.  exp: 1991';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."PROGRAM_SUM_REF" IS 'The Program Sum Reference is the highest grouping for a client program and facilitates client reporting. The under writing year for a program is dropped. Hence all the programs for the different underwiritng years will have the same Program sum reference. For example, the  GRAIL program reference for  U/W year 97 is U001000197. The PROGRAM_SUM_REF for this program is U0010001. ';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."PROGRAM_SUM_DSC" IS 'The Description for the program for the specific program year. The description for the program above is " International Property Per Risk Reinsurance"';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."CONTRACT_SUM_REF" IS 'The Contract Sum Reference is the highest grouping for contracts by Contract Number and Contract Sequence.  The U/W  Year is dropped to be able to group the contracts with the same Contra Reference and Contract Sequence. This field facilitates contract  reporting regardless of the U/W Yea. For example,  GRAIL contracts with  contract numbers U001000197  and U001000199 , and the Contract Sequence is 001 . The  Contract   Sum Reference for these contracts is U0010001-001. r. ';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."CONTRAC_SUM_DSC" IS 'The Description for the contract for the specific program year. The description for the program above is Onshore Energy';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."CONTRACT_REF" IS 'The Contract Reference of a contract. For the GRAIL contract listed on the  Contract Sum Reference definition, the contractreferences are U001000197  and U001000199.';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."CONTRACT_DSC" IS 'The textual description of a contract , for example  Onshore Energy';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."CONTRACT_EFF_DT" IS 'Contract effective date';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."CONTRACT_EXPR_DT" IS 'Contract expiration date';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."ER_CONTRACT_ID" IS 'Primary Key of the Contract table from the Enterprise Repository, which is the source for the datamart. This is used for audit purposes.';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."CONTRACT_PLACING_OFFICE" IS 'The office code from which the selected contract(s) were placed.';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."CONTRACT_PLACING_OFFICE_DSC" IS 'Name of the  office from which the selected contract(s) were placed.';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."DD_ER_PROGRAM_ID" IS 'Primary Key of the Program table from the Enterprise Repository, which is the source for the datamart. This is used for audit purposes.';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."DD_ER_SECTION_ID" IS 'Primary Key of the Section table from the Enterprise Repository, which is the source for the datamart. This is used for audit purposes.';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."DD_APPLICATION_ID" IS 'The Id of the source application that populated this record in the Enterprise Repository. For Example, GRAIL, TWINS.';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."DD_GC_ENTITY_ID" IS 'The Id of the legal entity to which this recod is belong. For Example the Guy Carpenter & Company LLC, which is the US company. ';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."PROGRAM_CREATED" IS 'User/program that  created the record by in the datamart  exp: ETL';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."PROGRAM_UPDATED" IS 'User/program that last updated the record  in the datamart  exp: ETL';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."CREATED_DT" IS 'Date that the record was created in the datamart';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."UPDATED_DT" IS 'User/Program that updated this record in the datamart	 ';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."GC_OUR_CONTRACT_REF" IS 'The full refernece of a contract (RISK_REF+RISK_NO+SEC_NO+ADDENDUM) ';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."IMPACT_CURR_CODE" IS 'The impact currency of a contract section. ';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."CEDENT_CONTRACT_REFERENCE" IS 'Client contract reference';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."PROGRAM_RENEWED_FROM_PROG_ID" IS 'The reference of the program to which this program is a renewal.';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."PROGRAM_RENEWED_TO_PROG_ID" IS 'The reference  of the program renewed from  this program.';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."CONTRACT_RENEWED_FROM_CONT_ID" IS 'The reference of the contract to which this contract is a renewal.';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."CONTRACT_RENEWED_TO_CONT_ID" IS 'The reference of the contract  renewed from  this contract.';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."GC_LEGACY_CONTRACT_REFERENCE" IS 'The contract reference from the source system from which the contract was converted.';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."CONTRACT_SEQUENCE_GROUP_ID" IS 'This field is used to properly group contracts that are renewed or endorsed.  The ETL process will assign the proper CONTRACT_SEQUENCE_GROUP_ID taking into consideration the values of Enterprise Repository fields ER_CONTRACT:GC_CONTRACT_VERSION, ER_PROGRAM:GC_RENEWED_FROM.';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."CONTRACT_SEQUENCE_NUMBER" IS 'This field is used to properly group contracts that are renewed or endorsed.  The ETL process will assign the proper CONTRACT_SEQUENCE_GROUP_ID taking into consideration the values of Enterprise Repository fields ER_CONTRACT:GC_CONTRACT_VERSION, ER_PROGRAM:GC_RENEWED_FROM.';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."CONTRACT_STATUS" IS 'Code that indentifies the designation of whether a contract has been renewed or lapsed, included to assist in the validation of contract linkage year to year';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."CONTRACT_STATUS_DSC" IS 'Textual description the code that indentifies the designation of whether a contract has been renewed or lapsed, included to assist in the validation of contract linkage year to year';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."WHOLESALE_SUPL_CONT_IND" IS 'If the valued is Y this field is a wholese contract.';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."CREATED_USER" IS 'User/Program that created this record in the datamart';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."UPDATE_USER" IS 'User/Program that updated this record in the datamart';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."DD_APPLICATION_ID_LEGACY" IS 'Source system where GC_LEGACY_CONTRACT_REFERENCE came from.';
+   COMMENT ON COLUMN "REVENUE_DM"."CONTRACT_DIM"."MATCHED_TO_CONTRACT_REF" IS 'When legacy contract is matched to Grail contract, this field will be populated for MF contract record, and holds matched-to Grail GC_OUR_CONTRACT_REF value';
+--------------------------------------------------------
+--  DDL for Table DATE_DIM
+--------------------------------------------------------
+
+  CREATE TABLE "REVENUE_DM"."DATE_DIM" 
+   (	"DATE_DIM_ID" NUMBER, 
+	"CALENDAR_YEAR" NUMBER, 
+	"CALENDAR_QTR" VARCHAR2(15 BYTE), 
+	"CALENDAR_MONTH" VARCHAR2(15 BYTE), 
+	"GC_FISCAL_YEAR" NUMBER, 
+	"GC_FISCAL_QTR" VARCHAR2(15 BYTE), 
+	"GC_FISCAL_MONTH" VARCHAR2(15 BYTE), 
+	"DAY_OF_WEEK" VARCHAR2(15 BYTE), 
+	"REVENUE_PERIOD" VARCHAR2(10 BYTE), 
+	"REVENUE_YEAR" NUMBER(4,0), 
+	"REVENUE_QUARTER" VARCHAR2(10 BYTE), 
+	"REVENUE_MONTH" VARCHAR2(10 BYTE), 
+	"PERIOD_CLOSED_INDICATOR" CHAR(1 BYTE), 
+	"REVENUE_PRIOR_PERIOD" VARCHAR2(10 BYTE), 
+	"REVENUE_PRIOR_YEAR" NUMBER(4,0), 
+	"REVENUE_PRIOR_QUARTER" VARCHAR2(10 BYTE), 
+	"REVENUE_NEXT_PERIOD" VARCHAR2(10 BYTE), 
+	"REVENUE_NEXT_YEAR" NUMBER(4,0), 
+	"REVENUE_NEXT_QUARTER" VARCHAR2(10 BYTE), 
+	"CREATED_DT" DATE, 
+	"UPDATE_DT" DATE, 
+	"REVENUE_QUARTER_NUMBER" NUMBER(2,0), 
+	"REVENUE_PRIOR_QUARTER_NUMBER" NUMBER(2,0), 
+	"REVENUE_PRIOR_MONTH" VARCHAR2(10 BYTE), 
+	"REVENUE_PRIOR_MONTH_SHORT" VARCHAR2(10 BYTE), 
+	"REVENUE_PRIOR_MONTH_NUMBER" NUMBER(2,0), 
+	"REVENUE_PRIOR_YEAR_QUARTER" VARCHAR2(10 BYTE), 
+	"REVENUE_PRIOR_YEAR_PERIOD" VARCHAR2(10 BYTE), 
+	"REVENUE_NEXT_QUARTER_NUMBER" NUMBER(1,0), 
+	"REVENUE_NEXT_MONTH" VARCHAR2(10 BYTE), 
+	"REVENUE_NEXT_MONTH_SHORT" VARCHAR2(10 BYTE), 
+	"REVENUE_NEXT_MONTH_NUMBER" NUMBER(2,0), 
+	"REVENUE_NEXT_YEAR_QUARTER" VARCHAR2(10 BYTE), 
+	"REVENUE_NEXT_YEAR_PERIOD" VARCHAR2(10 BYTE), 
+	"REVENUE_MONTH_SHORT" VARCHAR2(10 BYTE), 
+	"REVENUE_MONTH_NUMBER" NUMBER(2,0), 
+	"QTR_NEW_LOST_BUS_CLOSED_IND" CHAR(1 BYTE), 
+	"PERIOD_NEW_LOST_BUS_CLOSED_IND" CHAR(1 BYTE), 
+	"RECOGNIZED_BSA_CLOSED_IND" VARCHAR2(1 BYTE), 
+	"EARNED_BSA_CLOSED_IND" VARCHAR2(1 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS NOLOGGING
+  STORAGE(INITIAL 2097152 NEXT 2097152 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_TBS_2" ;
+
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."DATE_DIM_ID" IS 'Primary Key to table DATE_DIM';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."CALENDAR_YEAR" IS 'Calendar year as numeric  exp: 2007';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."CALENDAR_QTR" IS 'Calendar quarter as text  exp: 2007-Q1';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."CALENDAR_MONTH" IS 'Calendar month as text  exp: Dec';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."GC_FISCAL_YEAR" IS 'GC fiscal year as numeric  exp: 2007';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."GC_FISCAL_QTR" IS 'GC fiscal quarter as text  exp: 2007-Q1';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."GC_FISCAL_MONTH" IS 'GC fiscal month as text  exp: Dec';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."DAY_OF_WEEK" IS 'Day of week as text  (not populated)';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_PERIOD" IS 'Revenue period as text  exp: 2007-12';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_YEAR" IS 'Revenue year as numeric  exp: 2007';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_QUARTER" IS 'Revenue quarter as text  exp:2007-Q4';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_MONTH" IS 'Revenue month as text  exp: December';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."PERIOD_CLOSED_INDICATOR" IS 'Period closed indicator exp: Y';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_PRIOR_PERIOD" IS 'Revenue prior period as text  exp: 2007-Q1';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_PRIOR_YEAR" IS 'Revenue prior year as numeric  exp: 2008';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_PRIOR_QUARTER" IS 'Revenue prior quarter as text  exp: 2006-Q3';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_NEXT_PERIOD" IS 'Revenue next period as text  exp: 2007-12';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_NEXT_YEAR" IS 'Revenue next year as numeric  exp: 2008';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_NEXT_QUARTER" IS 'Revenue next quarter as text  exp: 2007-Q1';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."CREATED_DT" IS 'Date that the record was created in the datamart';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."UPDATE_DT" IS 'Date that the record was updated in the datamart';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_QUARTER_NUMBER" IS 'Revenue quarter as numeric  Exp:  4';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_PRIOR_QUARTER_NUMBER" IS 'Revenue prior quarter number as numeric  Exp: 3';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_PRIOR_MONTH" IS 'Revenue prior month as text  exp: November';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_PRIOR_MONTH_SHORT" IS 'Revenue prior month abbreviation  exp: Nov';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_PRIOR_MONTH_NUMBER" IS 'Revenue prior month number as numeric  exp: 11';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_PRIOR_YEAR_QUARTER" IS 'Revenue prior year quarter as text  exp: 2006-Q4';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_PRIOR_YEAR_PERIOD" IS 'Revenue prior year period as text  exp: 2006-12';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_NEXT_QUARTER_NUMBER" IS 'Revenue next quarter number as numeric wxp:  1';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_NEXT_MONTH" IS 'Revenue next month as text  exp: January';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_NEXT_MONTH_SHORT" IS 'Revenue next month abbreviation  exp: Jan';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_NEXT_MONTH_NUMBER" IS 'Revenue next month number as numeric  exp: 12';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_NEXT_YEAR_QUARTER" IS 'Revenue next year quarter as text exp: 2008-Q4';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_NEXT_YEAR_PERIOD" IS 'Revenue next year period as text  exp:  2008-12';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_MONTH_SHORT" IS 'Revenue month abbreviation  exp: Dec';
+   COMMENT ON COLUMN "REVENUE_DM"."DATE_DIM"."REVENUE_MONTH_NUMBER" IS 'Revenue month number as numeric  exp: 12';
+--------------------------------------------------------
+--  DDL for Table ER_SELFSERVICE_ACCRUAL_FILES
+--------------------------------------------------------
+
+  CREATE TABLE "REVENUE_DM"."ER_SELFSERVICE_ACCRUAL_FILES" 
+   (	"PK_ACCR_FILE_ID" VARCHAR2(255 BYTE), 
+	"FILE_ID" VARCHAR2(100 BYTE), 
+	"FILE_NAME" VARCHAR2(255 BYTE), 
+	"STATUS" VARCHAR2(15 BYTE), 
+	"USER_ID" VARCHAR2(100 BYTE), 
+	"CREATED_DT" DATE, 
+	"UPDATED_DT" DATE
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS NOLOGGING
+  TABLESPACE "REVENUE_DM_TBS" ;
+--------------------------------------------------------
+--  DDL for Table ER_SELFSERVICE_ACCRUAL_RECORDS
+--------------------------------------------------------
+
+  CREATE TABLE "REVENUE_DM"."ER_SELFSERVICE_ACCRUAL_RECORDS" 
+   (	"ACCR_GL_ENTITY_CODE" VARCHAR2(255 BYTE), 
+	"ACCR_GL_LOCATION_CODE" VARCHAR2(255 BYTE), 
+	"ACCR_GL_DEPT_CODE" VARCHAR2(255 BYTE), 
+	"ACCR_GL_PRODUCT_CODE" VARCHAR2(255 BYTE), 
+	"ACCR_GL_BUSINESS_SEG_CODE" VARCHAR2(255 BYTE), 
+	"ACCR_GL_PERIOD_MON_YEAR" VARCHAR2(255 BYTE), 
+	"ACCR_ORG_CCY_CODE" VARCHAR2(255 BYTE), 
+	"ACCR_CLIENT_NAME" VARCHAR2(255 BYTE), 
+	"ACCR_AMT" VARCHAR2(255 BYTE), 
+	"ACCR_ACCT_CODE" VARCHAR2(255 BYTE), 
+	"ACCR_REVENUE_CODE" VARCHAR2(255 BYTE), 
+	"ACCR_APP_ID" VARCHAR2(255 BYTE), 
+	"ACCR_UNDERWRITING_YR" VARCHAR2(255 BYTE), 
+	"C14" VARCHAR2(255 BYTE), 
+	"ACCR_ACTUAL_RESTATE" VARCHAR2(255 BYTE), 
+	"CONTRACT_REF" VARCHAR2(255 BYTE), 
+	"BUSINESS_CLASS_DSC" VARCHAR2(255 BYTE), 
+	"CONTRACT_CLASS_DSC" VARCHAR2(255 BYTE), 
+	"FILE_ID" VARCHAR2(100 BYTE), 
+	"FK_ACCR_FILE_ID" VARCHAR2(255 BYTE), 
+	"USER_ID" VARCHAR2(100 BYTE), 
+	"CREATED_DT" DATE, 
+	"STATUS" VARCHAR2(50 BYTE), 
+	"UPDATED_DT" DATE, 
+	"PK_ACCR_RECS_ID" NUMBER, 
+	"R12_CODE" VARCHAR2(25 BYTE), 
+	"REPORT_FLAG" VARCHAR2(1 BYTE) DEFAULT 'N'
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS NOLOGGING
+  TABLESPACE "REVENUE_DM_TBS" ;
+--------------------------------------------------------
+--  DDL for Index FK_BUDGET_REVENUE_TYPE_DIM_IX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."FK_BUDGET_REVENUE_TYPE_DIM_IX" ON "REVENUE_DM"."BUDGET_FACT" ("REVENUE_TYPE_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index FK_BUDGET_TRANSACTION_DIM_IX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."FK_BUDGET_TRANSACTION_DIM_IX" ON "REVENUE_DM"."BUDGET_FACT" ("TRANSACTION_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index IX$BUD_VER__DIM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."IX$BUD_VER__DIM_IDX" ON "REVENUE_DM"."BUDGET_FACT" ("BUDGET_VERSION_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index IX$CED_DIM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."IX$CED_DIM_IDX" ON "REVENUE_DM"."BUDGET_FACT" ("CEDENT_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index IX$CONT_DIM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."IX$CONT_DIM_IDX" ON "REVENUE_DM"."BUDGET_FACT" ("CONTRACT_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index IX$ER_HYP_STG2_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."IX$ER_HYP_STG2_IDX" ON "REVENUE_DM"."BUDGET_FACT" ("ER_HYPERION_STAGE_2_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index IX$PRF_CTR_DIM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."IX$PRF_CTR_DIM_IDX" ON "REVENUE_DM"."BUDGET_FACT" ("PROFIT_CENTER_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index IX$REV_DTE_DIM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."IX$REV_DTE_DIM_IDX" ON "REVENUE_DM"."BUDGET_FACT" ("REVENUE_DATE_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index IX$SRCE_DIM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."IX$SRCE_DIM_IDX" ON "REVENUE_DM"."BUDGET_FACT" ("SOURCE_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index PK_BUDGET_FACT
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REVENUE_DM"."PK_BUDGET_FACT" ON "REVENUE_DM"."BUDGET_FACT" ("BUDGET_FACT_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index BUS_CLS$BUS_CLS_DSC_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."BUS_CLS$BUS_CLS_DSC_IDX" ON "REVENUE_DM"."BUSINESS_CLASSIFICATION_DIM" ("BUSNESS_CLASS_DSC") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index BUS_CLS_DIM_UI
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REVENUE_DM"."BUS_CLS_DIM_UI" ON "REVENUE_DM"."BUSINESS_CLASSIFICATION_DIM" ("MAJOR_CLASS_CODE", "BUSNESS_CLASS_CODE") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index BS_CL_DIM_CLCODE_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."BS_CL_DIM_CLCODE_IDX" ON "REVENUE_DM"."BUSINESS_CLASSIFICATION_DIM" ("BUSNESS_CLASS_CODE") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index PK_BUSINESS_CLASSIFICATION_DIM
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REVENUE_DM"."PK_BUSINESS_CLASSIFICATION_DIM" ON "REVENUE_DM"."BUSINESS_CLASSIFICATION_DIM" ("BUSINESS_CLASSIFICATION_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index X$CON_EFF_DTE_REF_2_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."X$CON_EFF_DTE_REF_2_IDX" ON "REVENUE_DM"."CONTRACT_DIM" (EXTRACT(YEAR FROM "CONTRACT_EFF_DT"), "CONTRACT_SUM_REF", "SECTION_NUMBER", "CONTRACT_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index PK_CONTRACT_DIM
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REVENUE_DM"."PK_CONTRACT_DIM" ON "REVENUE_DM"."CONTRACT_DIM" ("CONTRACT_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index CONTRACT_DIM_INDEX2
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."CONTRACT_DIM_INDEX2" ON "REVENUE_DM"."CONTRACT_DIM" ("DD_APPLICATION_ID", SUBSTR("GC_OUR_CONTRACT_REF",1,LENGTH("GC_OUR_CONTRACT_REF")-3), "PROGRAM_SEQUENCE_GROUP_ID", "PROGRAM_SEQUENCE_NUMBER") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 2097152 NEXT 2097152 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_TBS" ;
+--------------------------------------------------------
+--  DDL for Index CONTRACT_DIM_INDEX3
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."CONTRACT_DIM_INDEX3" ON "REVENUE_DM"."CONTRACT_DIM" ("DD_APPLICATION_ID", SUBSTR("GC_OUR_CONTRACT_REF",1,14)) 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 2097152 NEXT 2097152 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_TBS" ;
+--------------------------------------------------------
+--  DDL for Index TRIMCONTRACT_REF
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."TRIMCONTRACT_REF" ON "REVENUE_DM"."CONTRACT_DIM" (TRIM("CONTRACT_REF")) 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index ER_PROGRAM_SEQ_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."ER_PROGRAM_SEQ_IDX" ON "REVENUE_DM"."CONTRACT_DIM" ("DD_ER_PROGRAM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index OFFICE
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."OFFICE" ON "REVENUE_DM"."CONTRACT_DIM" ("CONTRACT_PLACING_OFFICE", "CONTRACT_PLACING_OFFICE_DSC") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index CON_DIM_WHOLE_SALE_UI
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REVENUE_DM"."CON_DIM_WHOLE_SALE_UI" ON "REVENUE_DM"."CONTRACT_DIM" ("CONTRACT_DIM_ID", "WHOLESALE_SUPL_CONT_IND") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index CONTRACT_SUM_REF_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."CONTRACT_SUM_REF_IDX" ON "REVENUE_DM"."CONTRACT_DIM" ("CONTRACT_SUM_REF") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 2097152 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index X$CON_EFF_DTE_REF_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."X$CON_EFF_DTE_REF_IDX" ON "REVENUE_DM"."CONTRACT_DIM" (EXTRACT(YEAR FROM "CONTRACT_EFF_DT"), "GC_OUR_CONTRACT_REF", "CONTRACT_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index CONTRACT_DIM_INDEX1
+--------------------------------------------------------
+
+  CREATE BITMAP INDEX "REVENUE_DM"."CONTRACT_DIM_INDEX1" ON "REVENUE_DM"."CONTRACT_DIM" ("SECTION_NUMBER") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 2097152 NEXT 2097152 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_TBS" ;
+--------------------------------------------------------
+--  DDL for Index MF_CONTRACT_SEQ_IDX03
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."MF_CONTRACT_SEQ_IDX03" ON "REVENUE_DM"."CONTRACT_DIM" ("DD_APPLICATION_ID", NVL(SUBSTR("GC_LEGACY_CONTRACT_REFERENCE",1,10),SUBSTR("GC_OUR_CONTRACT_REF",1,10))) 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index MF_CONTRACT_SEQ_IDX06
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."MF_CONTRACT_SEQ_IDX06" ON "REVENUE_DM"."CONTRACT_DIM" ("DD_APPLICATION_ID", SUBSTR("GC_LEGACY_CONTRACT_REFERENCE",1,10)) 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index MF_CONTRACT_SEQ_IDX04
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."MF_CONTRACT_SEQ_IDX04" ON "REVENUE_DM"."CONTRACT_DIM" ("DD_APPLICATION_ID", "GC_LEGACY_CONTRACT_REFERENCE", "IMPACT_CURR_CODE", "CONTRACT_EFF_DT") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index MF_CONTRACT_SEQ_IDX05
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."MF_CONTRACT_SEQ_IDX05" ON "REVENUE_DM"."CONTRACT_DIM" ("DD_APPLICATION_ID", "GC_LEGACY_CONTRACT_REFERENCE", "IMPACT_CURR_CODE", "CONTRACT_EFF_DT", "GC_OUR_CONTRACT_REF") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index APPL_ID_ENITYID_IDX01
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."APPL_ID_ENITYID_IDX01" ON "REVENUE_DM"."CONTRACT_DIM" ("DD_APPLICATION_ID", "DD_GC_ENTITY_ID", "CONTRACT_DIM_ID", "PROGRAM_SUM_REF") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index BULL_CONTRACT_SEQ_IDX01
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."BULL_CONTRACT_SEQ_IDX01" ON "REVENUE_DM"."CONTRACT_DIM" ("DD_APPLICATION_ID", SUBSTR("GC_LEGACY_CONTRACT_REFERENCE",1,4), TO_CHAR("CONTRACT_EFF_DT",'YYYY')) 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index BULL_CONTRACT_SEQ_IDX02
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."BULL_CONTRACT_SEQ_IDX02" ON "REVENUE_DM"."CONTRACT_DIM" ("DD_APPLICATION_ID", NVL(SUBSTR("GC_LEGACY_CONTRACT_REFERENCE",1,4),SUBSTR("GC_OUR_CONTRACT_REF",1,4))) 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index PROG_REF_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."PROG_REF_IDX" ON "REVENUE_DM"."CONTRACT_DIM" ("PROGRAM_SUM_REF", "PROGRAM_SEQUENCE_GROUP_ID", "CONTRACT_SEQUENCE_GROUP_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index BULL_CONTRACT_SEQ_IDX03
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."BULL_CONTRACT_SEQ_IDX03" ON "REVENUE_DM"."CONTRACT_DIM" ("DD_APPLICATION_ID", SUBSTR("GC_LEGACY_CONTRACT_REFERENCE",1,4)) 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index CTR_DIM$OUR_CTR_REF_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."CTR_DIM$OUR_CTR_REF_IDX" ON "REVENUE_DM"."CONTRACT_DIM" ("GC_OUR_CONTRACT_REF", "CONTRACT_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index CONTRACT_REF_FUT_DATED_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."CONTRACT_REF_FUT_DATED_IDX" ON "REVENUE_DM"."CONTRACT_DIM" ("DD_ER_SECTION_ID", "GC_OUR_CONTRACT_REF") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index CONTRACT_RENEWED_FROM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."CONTRACT_RENEWED_FROM_IDX" ON "REVENUE_DM"."CONTRACT_DIM" ("DD_APPLICATION_ID", "CONTRACT_RENEWED_FROM_CONT_ID", "IMPACT_CURR_CODE") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index OT_CONTRACT_MTCH_IDX01
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."OT_CONTRACT_MTCH_IDX01" ON "REVENUE_DM"."CONTRACT_DIM" ("DD_APPLICATION_ID", "DD_GC_ENTITY_ID", "DD_APPLICATION_ID_LEGACY", SUBSTR("GC_OUR_CONTRACT_REF",1,14)) 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index CON_DIM_UI
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REVENUE_DM"."CON_DIM_UI" ON "REVENUE_DM"."CONTRACT_DIM" ("CONTRACT_REF", "DD_ER_SECTION_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index BUDGET_REF_TRIM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."BUDGET_REF_TRIM_IDX" ON "REVENUE_DM"."CONTRACT_DIM" (TRIM("BUDGET_REF")) 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index BUDGET_REF_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."BUDGET_REF_IDX" ON "REVENUE_DM"."CONTRACT_DIM" ("BUDGET_REF") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index CON_DIM_MATCHED_TO_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."CON_DIM_MATCHED_TO_IDX" ON "REVENUE_DM"."CONTRACT_DIM" ("MATCHED_TO_CONTRACT_REF") 
+  PCTFREE 5 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 524288 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index MF_CONTRACT_SEQ_IDX01
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."MF_CONTRACT_SEQ_IDX01" ON "REVENUE_DM"."CONTRACT_DIM" ("DD_APPLICATION_ID", "GC_LEGACY_CONTRACT_REFERENCE", "IMPACT_CURR_CODE") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index MF_CONTRACT_SEQ_IDX02
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."MF_CONTRACT_SEQ_IDX02" ON "REVENUE_DM"."CONTRACT_DIM" ("DD_APPLICATION_ID", SUBSTR("GC_LEGACY_CONTRACT_REFERENCE",1,10), TO_CHAR("CONTRACT_EFF_DT",'YYYY')) 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index X$CON_EFF_DTE_DIM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."X$CON_EFF_DTE_DIM_IDX" ON "REVENUE_DM"."CONTRACT_DIM" ("CONTRACT_EFF_DT") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index SUBSTRCONTRACT_REF
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."SUBSTRCONTRACT_REF" ON "REVENUE_DM"."CONTRACT_DIM" (SUBSTR("CONTRACT_REF",1,6)) 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index DATE_DIM_REV_PER_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."DATE_DIM_REV_PER_IDX" ON "REVENUE_DM"."DATE_DIM" ("REVENUE_PERIOD") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index DATEDIM_REV_PRYR_PER_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."DATEDIM_REV_PRYR_PER_IDX" ON "REVENUE_DM"."DATE_DIM" ("REVENUE_PRIOR_YEAR_PERIOD") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index DATEDIM_REV_NXYR_PER_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."DATEDIM_REV_NXYR_PER_IDX" ON "REVENUE_DM"."DATE_DIM" ("REVENUE_NEXT_YEAR_PERIOD") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index PK_DATE_DIM
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REVENUE_DM"."PK_DATE_DIM" ON "REVENUE_DM"."DATE_DIM" ("DATE_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C002814870
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REVENUE_DM"."SYS_C002814870" ON "REVENUE_DM"."ER_SELFSERVICE_ACCRUAL_FILES" ("PK_ACCR_FILE_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  TABLESPACE "REVENUE_DM_TBS" ;
+--------------------------------------------------------
+--  DDL for Index ER_SELFSERVICE_ACCRUAL_REC_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REVENUE_DM"."ER_SELFSERVICE_ACCRUAL_REC_PK" ON "REVENUE_DM"."ER_SELFSERVICE_ACCRUAL_RECORDS" ("PK_ACCR_RECS_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  TABLESPACE "REVENUE_DM_TBS" ;
+--------------------------------------------------------
+--  Constraints for Table BUDGET_FACT
+--------------------------------------------------------
+
+  ALTER TABLE "REVENUE_DM"."BUDGET_FACT" ADD CONSTRAINT "PK_BUDGET_FACT" PRIMARY KEY ("BUDGET_FACT_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX"  ENABLE;
+  ALTER TABLE "REVENUE_DM"."BUDGET_FACT" MODIFY ("BUDGET_FACT_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table BUSINESS_CLASSIFICATION_DIM
+--------------------------------------------------------
+
+  ALTER TABLE "REVENUE_DM"."BUSINESS_CLASSIFICATION_DIM" ADD CONSTRAINT "PK_BUSINESS_CLASSIFICATION_DIM" PRIMARY KEY ("BUSINESS_CLASSIFICATION_DIM_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX"  ENABLE;
+  ALTER TABLE "REVENUE_DM"."BUSINESS_CLASSIFICATION_DIM" MODIFY ("CREATED_DT" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."BUSINESS_CLASSIFICATION_DIM" MODIFY ("BUSNESS_CLASS_DSC" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."BUSINESS_CLASSIFICATION_DIM" MODIFY ("BUSNESS_CLASS_CODE" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."BUSINESS_CLASSIFICATION_DIM" MODIFY ("MAJOR_CLASS_DSC" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."BUSINESS_CLASSIFICATION_DIM" MODIFY ("MAJOR_CLASS_CODE" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."BUSINESS_CLASSIFICATION_DIM" MODIFY ("BUSINESS_CLASSIFICATION_DIM_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table CONTRACT_DIM
+--------------------------------------------------------
+
+  ALTER TABLE "REVENUE_DM"."CONTRACT_DIM" ADD CONSTRAINT "PK_CONTRACT_DIM" PRIMARY KEY ("CONTRACT_DIM_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX"  ENABLE;
+  ALTER TABLE "REVENUE_DM"."CONTRACT_DIM" MODIFY ("CREATED_DT" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."CONTRACT_DIM" MODIFY ("DD_GC_ENTITY_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."CONTRACT_DIM" MODIFY ("DD_APPLICATION_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."CONTRACT_DIM" MODIFY ("ER_CONTRACT_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."CONTRACT_DIM" MODIFY ("CONTRACT_SUM_REF" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."CONTRACT_DIM" MODIFY ("PROGRAM_SUM_REF" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."CONTRACT_DIM" MODIFY ("CONTRACT_DIM_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."CONTRACT_DIM" MODIFY ("CONTRACT_STATUS_DSC" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."CONTRACT_DIM" MODIFY ("CONTRACT_STATUS" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."CONTRACT_DIM" MODIFY ("CONTRACT_SEQUENCE_GROUP_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table DATE_DIM
+--------------------------------------------------------
+
+  ALTER TABLE "REVENUE_DM"."DATE_DIM" ADD CONSTRAINT "PK_DATE_DIM" PRIMARY KEY ("DATE_DIM_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX"  ENABLE;
+  ALTER TABLE "REVENUE_DM"."DATE_DIM" MODIFY ("CREATED_DT" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."DATE_DIM" MODIFY ("DATE_DIM_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table ER_SELFSERVICE_ACCRUAL_FILES
+--------------------------------------------------------
+
+  ALTER TABLE "REVENUE_DM"."ER_SELFSERVICE_ACCRUAL_FILES" ADD PRIMARY KEY ("PK_ACCR_FILE_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  TABLESPACE "REVENUE_DM_TBS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table ER_SELFSERVICE_ACCRUAL_RECORDS
+--------------------------------------------------------
+
+  ALTER TABLE "REVENUE_DM"."ER_SELFSERVICE_ACCRUAL_RECORDS" ADD CONSTRAINT "ER_SELFSERVICE_ACCRUAL_REC_PK" PRIMARY KEY ("PK_ACCR_RECS_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  TABLESPACE "REVENUE_DM_TBS"  ENABLE;
+  ALTER TABLE "REVENUE_DM"."ER_SELFSERVICE_ACCRUAL_RECORDS" MODIFY ("PK_ACCR_RECS_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."ER_SELFSERVICE_ACCRUAL_RECORDS" MODIFY ("FK_ACCR_FILE_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."ER_SELFSERVICE_ACCRUAL_RECORDS" MODIFY ("FILE_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Ref Constraints for Table BUDGET_FACT
+--------------------------------------------------------
+
+  ALTER TABLE "REVENUE_DM"."BUDGET_FACT" ADD CONSTRAINT "FK_BUDGET_REVENUE_TYPE_DIM" FOREIGN KEY ("REVENUE_TYPE_ID")
+	  REFERENCES "REVENUE_DM"."REVENUE_TYPE_DIM" ("REVENUE_TYPE_ID") ENABLE;
+  ALTER TABLE "REVENUE_DM"."BUDGET_FACT" ADD CONSTRAINT "FK_BUDGET_TRANSACTION_DIM" FOREIGN KEY ("TRANSACTION_DIM_ID")
+	  REFERENCES "REVENUE_DM"."TRANSACTION_DIM" ("TRANSACTION_DIM_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table ER_SELFSERVICE_ACCRUAL_RECORDS
+--------------------------------------------------------
+
+  ALTER TABLE "REVENUE_DM"."ER_SELFSERVICE_ACCRUAL_RECORDS" ADD FOREIGN KEY ("FK_ACCR_FILE_ID")
+	  REFERENCES "REVENUE_DM"."ER_SELFSERVICE_ACCRUAL_FILES" ("PK_ACCR_FILE_ID") ON DELETE CASCADE ENABLE;
+
+
+--------------------------------------------------------
+--  DDL for Table PROFIT_CENTER_DIM
+--------------------------------------------------------
+
+  CREATE TABLE "REVENUE_DM"."PROFIT_CENTER_DIM" 
+   (	"PROFIT_CENTER_DIM_ID" NUMBER, 
+	"SUMMARY_REGION_CODE" VARCHAR2(35 BYTE), 
+	"SUMMARY_REGION_DSC" VARCHAR2(65 BYTE), 
+	"REGION_CODE" VARCHAR2(35 BYTE), 
+	"REGION_DSC" VARCHAR2(65 BYTE), 
+	"PROFIT_CODE" VARCHAR2(35 BYTE), 
+	"PROFIT_DSC" VARCHAR2(65 BYTE), 
+	"EFF_DT" DATE, 
+	"END_DT" DATE, 
+	"SUMMARY_REGION_SORT_ORDER" NUMBER(2,0), 
+	"REGION_SORT_ORDER" NUMBER(2,0), 
+	"CREATED_DT" DATE, 
+	"UPDATE_DT" DATE, 
+	"GC_LEGAL_ENTITY_CODE" NUMBER(10,0), 
+	"GC_LEGAL_ENTITY_DSC" VARCHAR2(65 BYTE), 
+	"SUMMARY_PROFIT_CENTER_CODE" VARCHAR2(35 BYTE) DEFAULT ' ', 
+	"SUMMARY_PROFIT_CENTER_DSC" VARCHAR2(65 BYTE) DEFAULT ' ', 
+	"SUMMARY_PROFIT_CENTER_SRT_ORDR" NUMBER(2,0), 
+	"GLOBAL_REGION_CODE" VARCHAR2(35 BYTE), 
+	"GLOBAL_REGION_DSC" VARCHAR2(65 BYTE), 
+	"GLOBAL_SUB_REGION_CODE" VARCHAR2(35 BYTE), 
+	"GLOBAL_SUB_REGION_DSC" VARCHAR2(65 BYTE), 
+	"HYPERION_RESPONSIBILITY_CENTER" VARCHAR2(100 BYTE), 
+	"SUMMARY_REGION_LATITUDE" NUMBER, 
+	"SUMMARY_REGION_LONGITUDE" NUMBER, 
+	"GC_FORCE_GROUP_CODE" VARCHAR2(35 BYTE), 
+	"GC_FORCE_GROUP_DSC" VARCHAR2(35 BYTE), 
+	"MANAGER_EMPLOYEE_ID" NUMBER, 
+	"DELEGATE_EMPLOYEE_ID" NUMBER
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS NOLOGGING
+  STORAGE(INITIAL 2097152 NEXT 2097152 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_TBS_2" ;
+
+   COMMENT ON COLUMN "REVENUE_DM"."PROFIT_CENTER_DIM"."PROFIT_CENTER_DIM_ID" IS 'Primary Key to table PROFIT_CENTER_DIM';
+   COMMENT ON COLUMN "REVENUE_DM"."PROFIT_CENTER_DIM"."SUMMARY_REGION_CODE" IS 'Summary region code  exp: 00001';
+   COMMENT ON COLUMN "REVENUE_DM"."PROFIT_CENTER_DIM"."SUMMARY_REGION_DSC" IS 'Summary region description  exp: Americas';
+   COMMENT ON COLUMN "REVENUE_DM"."PROFIT_CENTER_DIM"."REGION_CODE" IS 'Region code  exp: 00003';
+   COMMENT ON COLUMN "REVENUE_DM"."PROFIT_CENTER_DIM"."REGION_DSC" IS 'Region description  exp: US Treaty West';
+   COMMENT ON COLUMN "REVENUE_DM"."PROFIT_CENTER_DIM"."PROFIT_CODE" IS 'Profit center code exp: 00008';
+   COMMENT ON COLUMN "REVENUE_DM"."PROFIT_CENTER_DIM"."PROFIT_DSC" IS 'Profit center description  exp: San Franciscpo - Treaty';
+   COMMENT ON COLUMN "REVENUE_DM"."PROFIT_CENTER_DIM"."EFF_DT" IS 'Effective date';
+   COMMENT ON COLUMN "REVENUE_DM"."PROFIT_CENTER_DIM"."END_DT" IS 'End date';
+   COMMENT ON COLUMN "REVENUE_DM"."PROFIT_CENTER_DIM"."SUMMARY_REGION_SORT_ORDER" IS 'Summary region sort order  exp: 1';
+   COMMENT ON COLUMN "REVENUE_DM"."PROFIT_CENTER_DIM"."REGION_SORT_ORDER" IS 'Region sort order  exp: 3';
+   COMMENT ON COLUMN "REVENUE_DM"."PROFIT_CENTER_DIM"."CREATED_DT" IS 'Date that the record was created in the datamart';
+   COMMENT ON COLUMN "REVENUE_DM"."PROFIT_CENTER_DIM"."UPDATE_DT" IS 'Date that the record was updated in the datamart';
+   COMMENT ON COLUMN "REVENUE_DM"."PROFIT_CENTER_DIM"."GC_LEGAL_ENTITY_CODE" IS 'Gc legal entity code  (not loaded)';
+   COMMENT ON COLUMN "REVENUE_DM"."PROFIT_CENTER_DIM"."GC_LEGAL_ENTITY_DSC" IS 'Gc legal entity description (not loaded)';
+--------------------------------------------------------
+--  DDL for Table REVENUE_FACT
+--------------------------------------------------------
+
+  CREATE TABLE "REVENUE_DM"."REVENUE_FACT" 
+   (	"REVENUE_FACT_ID" NUMBER, 
+	"CONTRACT_DIM_ID" NUMBER, 
+	"REVENUE_TYPE_ID" CHAR(10 BYTE), 
+	"TRANSACTION_DIM_ID" NUMBER, 
+	"BUSINESS_CLASSIFICATION_DIM_ID" NUMBER, 
+	"RISK_LOCATION_DIM_ID" NUMBER, 
+	"SOURCE_OVERRIDE_DIM_ID" NUMBER, 
+	"CONTRACT_CLASSIFICATION_DIM_ID" NUMBER, 
+	"PERIL_DIM_ID" NUMBER, 
+	"TRANS_DATE_DIM_ID" NUMBER, 
+	"ACCOUNTING_DATE_DIM_ID" NUMBER, 
+	"REVENUE_DATE_DIM_ID" NUMBER, 
+	"PRODUCING_BROKER_ID" NUMBER, 
+	"AE_BROKER_DIM_ID" NUMBER, 
+	"CURRENT_PROFIT_CENTER_DIM_ID" NUMBER, 
+	"ORIGINAL_PROFIT_CENTER_DIM_ID" NUMBER, 
+	"CEDENT_DIM_ID" NUMBER, 
+	"REINSURER_DIM_ID" NUMBER, 
+	"CEDENT_MANAGING_MEMBER_DIM_ID" NUMBER, 
+	"REINSURER_MANAGING_MEMBER_ID" NUMBER, 
+	"CEDENT_THIRD_PTY_BROKER_DIM_ID" NUMBER, 
+	"REINSURER_THIRD_PTY_BROKER_ID" NUMBER, 
+	"SERVICE_BUREAU_ID" NUMBER, 
+	"BOOKED_ORIGINAL_CURR_CODE" VARCHAR2(3 BYTE), 
+	"BOOKED_ORIGINAL_AMT" NUMBER, 
+	"BOOKED_LEDGER_CURR_CODE" VARCHAR2(3 BYTE), 
+	"BOOKED_LEDGER_AMT" NUMBER, 
+	"BOOKED_AMOUNT_USD" NUMBER(15,2), 
+	"EARNED_ORIGINAL_CURR_CODE" VARCHAR2(3 BYTE), 
+	"EARNED_ORIGINAL_AMT" NUMBER, 
+	"EARNED_LEDGER_CURR_CODE" VARCHAR2(3 BYTE), 
+	"EARNED_LEDGER_AMT" NUMBER, 
+	"EARNED_AMOUNT_USD" NUMBER(15,6), 
+	"ASSOCIATED_PREMIUM_USD" NUMBER(15,6), 
+	"ER_SOURCE_KEY" VARCHAR2(35 BYTE), 
+	"CREATED_DT" DATE, 
+	"UPDATE_DT" DATE, 
+	"DD_APPLICATION_ID" NUMBER, 
+	"LOST_BUSINESS_DIM_ID" NUMBER, 
+	"LOST_BUSINESS_OVERRIDE_DIM_ID" NUMBER, 
+	"SOURCE_DIM_ID" NUMBER, 
+	"SOURCE_SYS_DIM_ID" NUMBER, 
+	"LOST_BUS_ALGRTHM_RTNL_DIM_ID" NUMBER, 
+	"SOURCE_ALGORITHM_RTNL_DIM_ID" NUMBER, 
+	"ACTUAL_RESTATE_DIM_ID" NUMBER, 
+	"TRANS_ACCT_START_DATE_DIM_ID" NUMBER, 
+	"TRANS_ACCT_END_DATE_DIM_ID" NUMBER, 
+	"BOOKED_DATE_DIM_ID" NUMBER, 
+	"ENTRY_DESCRIPTION" VARCHAR2(255 BYTE), 
+	"RECOGNIZED_ORIGINAL_CURR_CODE" VARCHAR2(3 BYTE), 
+	"RECOGNIZED_ORIGINAL_AMT" NUMBER, 
+	"RECOGNIZED_LEDGER_CURR_CODE" VARCHAR2(3 BYTE), 
+	"RECOGNIZED_LEDGER_AMT" NUMBER, 
+	"RECOGNIZED_AMOUNT_USD" NUMBER, 
+	"RECOGNIZED_DATE_DIM_ID" NUMBER, 
+	"REALIZED_ORIGINAL_CURR_CODE" VARCHAR2(3 BYTE), 
+	"REALIZED_ORIGINAL_AMT" NUMBER, 
+	"REALIZED_LEDGER_CURR_CODE" VARCHAR2(3 BYTE), 
+	"REALIZED_LEDGER_AMT" NUMBER, 
+	"REALIZED_AMOUNT_USD" NUMBER, 
+	"REALIZED_DATE_DIM_ID" NUMBER, 
+	"CLIENT_MARKET_ACCOUNT_CODES" VARCHAR2(1000 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS NOLOGGING
+  STORAGE(INITIAL 2097152 NEXT 2097152 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_TBS_2" ;
+--------------------------------------------------------
+--  DDL for Table REVENUE_TYPE_DIM
+--------------------------------------------------------
+
+  CREATE TABLE "REVENUE_DM"."REVENUE_TYPE_DIM" 
+   (	"REVENUE_TYPE_ID" CHAR(10 BYTE), 
+	"REVENUE_CATEGORY_CODE" VARCHAR2(5 BYTE), 
+	"REVENUE_CATEGORY_DSC" VARCHAR2(250 BYTE), 
+	"REVENUE_TYPE_CODE" VARCHAR2(5 BYTE), 
+	"REVENUE_TYPE_DSC" VARCHAR2(35 BYTE), 
+	"CREATED_DT" DATE, 
+	"UPDATED_DT" DATE, 
+	"REVENUE_SOURCE_REVENUE_GRP" VARCHAR2(5 BYTE), 
+	"REVENUE_SOURCE_REVENUE_DSC" VARCHAR2(35 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS NOLOGGING
+  STORAGE(INITIAL 2097152 NEXT 2097152 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_TBS_2" ;
+--------------------------------------------------------
+--  DDL for Table TRADING_PARTNER_DIM
+--------------------------------------------------------
+
+  CREATE TABLE "REVENUE_DM"."TRADING_PARTNER_DIM" 
+   (	"TP_DIM_ID" NUMBER, 
+	"TP_ULT_PARENT_NAME" VARCHAR2(120 BYTE), 
+	"TP_PARENT_NAME" VARCHAR2(120 BYTE), 
+	"TP_NAME" VARCHAR2(120 BYTE), 
+	"TP_ULT_PARENT_LEGAL_NAME" VARCHAR2(120 BYTE), 
+	"TP_PARENT_LEGAL_NAME" VARCHAR2(120 BYTE), 
+	"TP_LEGAL_NAME" VARCHAR2(120 BYTE), 
+	"TP_ACCT_CODE" VARCHAR2(35 BYTE), 
+	"COMPANY_TYPE_DSC" VARCHAR2(60 BYTE), 
+	"GLOBAL_REGION_CODE" VARCHAR2(35 BYTE), 
+	"GLOBAL_REGION_DSC" VARCHAR2(35 BYTE), 
+	"SUB_REGION_CODE" VARCHAR2(35 BYTE), 
+	"SUB_REGION_DSC" VARCHAR2(65 BYTE), 
+	"DOMICILE_CODE" VARCHAR2(35 BYTE), 
+	"DOMICILE_DSC" VARCHAR2(65 BYTE), 
+	"SOURCE_SYSTEM_CODE" VARCHAR2(10 BYTE), 
+	"TP_ULT_PARENT_ID" NUMBER, 
+	"TP_PARENT_ID" NUMBER, 
+	"TP_ID" NUMBER, 
+	"CREATED_DT" DATE, 
+	"UPDATE_DT" DATE, 
+	"TP_ACCT_CODE_TYPE" VARCHAR2(5 BYTE), 
+	"TP_ACCT_CODE_TYPE_DSC" VARCHAR2(100 BYTE), 
+	"TP_LEGAL_STATUS_CODE" VARCHAR2(5 BYTE), 
+	"TP_LEGAL_STATUS_DSC" VARCHAR2(60 BYTE), 
+	"TP_LEGAL_STATUS_EFF_DT" DATE, 
+	"TP_PARENT_LEGAL_STS_CODE" VARCHAR2(5 BYTE), 
+	"TP_PARENT_LEGAL_STS_DSC" VARCHAR2(60 BYTE), 
+	"TP_PARENT_LEGAL_STS_EFF_DT" DATE, 
+	"TP_ULT_PAR_LGL_STS_CODE" VARCHAR2(5 BYTE), 
+	"TP_ULT_PAR_LGL_STS_DSC" VARCHAR2(60 BYTE), 
+	"TP_ULT_PAR_LGL_STS_EFF_DT" DATE, 
+	"TP_ULT_PAR_SEGMENTATION_CODE" VARCHAR2(35 BYTE), 
+	"TP_ULT_PAR_SEGMENTATION_DSC" VARCHAR2(65 BYTE), 
+	"DOMICILE_STATE_PROVINCE_CODE" VARCHAR2(35 BYTE), 
+	"DOMICILE_STATE_PROVINCE_DSC" VARCHAR2(65 BYTE), 
+	"DOMICILE_STATE_PROVINCE_TYPE" VARCHAR2(65 BYTE), 
+	"TP_SEGMENTATION_BREAKOUT_CODE" NUMBER, 
+	"MDM_ID" NUMBER, 
+	"TP_FATCA_STATUS_CODE" VARCHAR2(5 BYTE), 
+	"TP_FATCA_STATUS_DSC" VARCHAR2(100 BYTE), 
+	"TP_FATCA_EFFECTIVE_DATE" DATE, 
+	"TP_FATCA_EXPIRATION_DATE" DATE, 
+	"TP_ORG_TYPE_ID" NUMBER, 
+	"TP_ORG_TYPE_DESC" VARCHAR2(100 BYTE), 
+	"TP_PARENT_ORG_TYPE_ID" NUMBER, 
+	"TP_PARENT_ORG_TYPE_DESC" VARCHAR2(100 BYTE), 
+	"TP_ULT_PARENT_ORG_TYPE_ID" NUMBER, 
+	"TP_ULT_PARENT_ORG_TYPE_DESC" VARCHAR2(100 BYTE), 
+	"TP_DUNS_NUMBER" VARCHAR2(25 BYTE), 
+	"TP_PARENT_DUNS_NUMBER" VARCHAR2(25 BYTE), 
+	"TP_ULT_PARENT_DUNS_NUMBER" VARCHAR2(25 BYTE), 
+	"TP_BROKER_TYPE_ID" NUMBER, 
+	"TP_BROKER_TYPE_DESC" VARCHAR2(100 BYTE), 
+	"TP_PARENT_BROKER_TYPE_ID" NUMBER, 
+	"TP_PARENT_BROKER_TYPE_DESC" VARCHAR2(100 BYTE), 
+	"TP_ULT_PARENT_BROKER_TYPE_ID" NUMBER, 
+	"TP_ULT_PARENT_BROKER_TYPE_DESC" VARCHAR2(100 BYTE), 
+	"TP_PARENT_MDM_ID" NUMBER, 
+	"TP_ULT_PARENT_MDM_ID" NUMBER, 
+	"TP_TYPE" VARCHAR2(5 BYTE), 
+	"TP_PARENT_TYPE" VARCHAR2(5 BYTE), 
+	"TP_ULTIMATE_PARENT_TYPE" VARCHAR2(5 BYTE), 
+	"TP_OWNERSHIP_LEVEL" NUMBER, 
+	"TP_OWNERSHIP_LEVEL_DSC" VARCHAR2(100 BYTE), 
+	"TP_OWNERSHIP_STATE" NUMBER, 
+	"TP_OWNERSHIP_STATE_DSC" VARCHAR2(100 BYTE), 
+	"TP_PARENT_OWNERSHIP_LEVEL" NUMBER, 
+	"TP_PARENT_OWNERSHIP_LEVEL_DSC" VARCHAR2(100 BYTE), 
+	"TP_PARENT_OWNERSHIP_STATE" NUMBER, 
+	"TP_PARENT_OWNERSHIP_STATE_DSC" VARCHAR2(100 BYTE), 
+	"TP_ULTIMATE_PARENT_OWNRSHP_LVL" NUMBER, 
+	"TP_ULTIMATE_PARENT_OWN_LVL_DSC" VARCHAR2(100 BYTE), 
+	"TP_ULT_PAR_OWNERSHIP_STATE" NUMBER, 
+	"TP_ULT_PAR_OWNERSHIP_STATE_DSC" VARCHAR2(100 BYTE), 
+	"TP_MARKET_STATUS" NUMBER, 
+	"TP_MARKET_STATUS_DSC" VARCHAR2(100 BYTE), 
+	"TP_AMBEST_RATING_ID" NUMBER, 
+	"TP_AMBEST_RATING_DESC" VARCHAR2(100 BYTE), 
+	"TP_AMBEST_OUTLOOK_ID" NUMBER, 
+	"TP_AMBEST_OUTLOOK_DESC" VARCHAR2(100 BYTE), 
+	"TP_PARENT_AMBEST_RATING_ID" NUMBER, 
+	"TP_PARENT_AMBEST_RATING_DESC" VARCHAR2(100 BYTE), 
+	"TP_PARENT_AMBEST_OUTLOOK_ID" NUMBER, 
+	"TP_PARENT_AMBEST_OUTLOOK_DESC" VARCHAR2(100 BYTE), 
+	"TP_ULT_PAR_AMBEST_RATING_ID" NUMBER, 
+	"TP_ULT_PAR_AMBEST_RATING_DESC" VARCHAR2(100 BYTE), 
+	"TP_ULT_PAR_AMBEST_OUTLOOK_ID" NUMBER, 
+	"TP_ULT_PAR_AMBEST_OUTLOOK_DESC" VARCHAR2(100 BYTE), 
+	"TP_SP_RATING_ID" NUMBER, 
+	"TP_SP_RATING_DESC" VARCHAR2(100 BYTE), 
+	"TP_SP_OUTLOOK_ID" NUMBER, 
+	"TP_SP_OUTLOOK_DESC" VARCHAR2(100 BYTE), 
+	"TP_PARENT_SP_RATING_ID" NUMBER, 
+	"TP_PARENT_SP_RATING_DESC" VARCHAR2(100 BYTE), 
+	"TP_PARENT_SP_OUTLOOK_ID" NUMBER, 
+	"TP_PARENT_SP_OUTLOOK_DESC" VARCHAR2(100 BYTE), 
+	"TP_ULT_PAR_SP_RATING_ID" NUMBER, 
+	"TP_ULT_PAR_SP_RATING_DESC" VARCHAR2(100 BYTE), 
+	"TP_ULT_PAR_SP_OUTLOOK_ID" NUMBER, 
+	"TP_ULT_PAR_SP_OUTLOOK_DESC" VARCHAR2(100 BYTE), 
+	"TP_POLICY_HOLDER_SURPLUS_CURR" VARCHAR2(3 BYTE), 
+	"TP_POLICY_HOLDER_SURPLUS_AMT" NUMBER, 
+	"TP_POLICY_HOLDER_SURPLUS_DATE" DATE, 
+	"TP_PAR_POLICY_HOLD_SURPL_CURR" VARCHAR2(3 BYTE), 
+	"TP_PAR_POLICY_HOLD_SURPL_AMT" NUMBER, 
+	"TP_PAR_POLICY_HOLD_SURPL_DATE" DATE, 
+	"TP_ULT_PAR_PLCY_HOLD_SRPL_CURR" VARCHAR2(3 BYTE), 
+	"TP_ULT_PAR_PLCY_HOLD_SRPL_AMT" NUMBER, 
+	"TP_ULT_PAR_PLCY_HOLD_SRPL_DATE" DATE, 
+	"DOMICILE_COUNTRY_LATITUDE" NUMBER, 
+	"DOMICILE_COUNTRY_LONGITUDE" NUMBER, 
+	"TP_SEG_SUMMARY_REGION_CODE" VARCHAR2(35 BYTE), 
+	"TP_SEG_SUMMARY_REGION_DSC" VARCHAR2(65 BYTE), 
+	"TP_LEI_REFERENCE" VARCHAR2(100 BYTE), 
+	"TP_INT_PARENT_ID" NUMBER, 
+	"TP_INT_PARENT_TYPE" VARCHAR2(5 BYTE), 
+	"TP_INT_PARENT_NAME" VARCHAR2(120 BYTE), 
+	"TP_INT_PARENT_LEGAL_NAME" VARCHAR2(120 BYTE), 
+	"TP_INT_PARENT_MDM_ID" NUMBER, 
+	"TP_INT_2_PARENT_ID" NUMBER, 
+	"TP_INT_2_PARENT_TYPE" VARCHAR2(5 BYTE), 
+	"TP_INT_2_PARENT_NAME" VARCHAR2(120 BYTE), 
+	"TP_INT_2_PARENT_LEGAL_NAME" VARCHAR2(120 BYTE), 
+	"TP_INT_2_PARENT_MDM_ID" NUMBER, 
+	"TP_REPORT_INT_PARENT_LGL_NAME" VARCHAR2(120 BYTE), 
+	"TP_REPORT_INT_PARENT_MDM_ID" NUMBER, 
+	"TP_REPORT_INT_PARENT_ID" NUMBER
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS NOLOGGING
+  STORAGE(INITIAL 2097152 NEXT 2097152 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_TBS_2" ;
+
+   COMMENT ON COLUMN "REVENUE_DM"."TRADING_PARTNER_DIM"."TP_DIM_ID" IS 'Primary Key to table TRADING_PARTNER_DIM';
+   COMMENT ON COLUMN "REVENUE_DM"."TRADING_PARTNER_DIM"."TP_ULT_PARENT_NAME" IS 'The name of the top level entity in the group structure.';
+   COMMENT ON COLUMN "REVENUE_DM"."TRADING_PARTNER_DIM"."TP_PARENT_NAME" IS 'The name of the parent entity/company.';
+   COMMENT ON COLUMN "REVENUE_DM"."TRADING_PARTNER_DIM"."TP_NAME" IS 'The name of the entity/company.';
+   COMMENT ON COLUMN "REVENUE_DM"."TRADING_PARTNER_DIM"."TP_ULT_PARENT_LEGAL_NAME" IS 'The legal name of the top level entity in the group structure.';
+   COMMENT ON COLUMN "REVENUE_DM"."TRADING_PARTNER_DIM"."TP_PARENT_LEGAL_NAME" IS 'The legal name of the parent entity/company.';
+   COMMENT ON COLUMN "REVENUE_DM"."TRADING_PARTNER_DIM"."TP_LEGAL_NAME" IS 'The legal name of the entity/company.';
+   COMMENT ON COLUMN "REVENUE_DM"."TRADING_PARTNER_DIM"."TP_ACCT_CODE" IS 'A reinsurance system account code assigned to a trading partner.';
+   COMMENT ON COLUMN "REVENUE_DM"."TRADING_PARTNER_DIM"."COMPANY_TYPE_DSC" IS 'Indentifies a company as Broker, Arrangement, Servicing Bureau, Risk Bearer, Cedant, Producing Broker or .Client Pool';
+   COMMENT ON COLUMN "REVENUE_DM"."TRADING_PARTNER_DIM"."GLOBAL_REGION_CODE" IS 'Code of the Global Region to which the Trading partners domicile country belongs. There is a defined structure: Global, Sub Region/Domicile Country.';
+   COMMENT ON COLUMN "REVENUE_DM"."TRADING_PARTNER_DIM"."GLOBAL_REGION_DSC" IS 'Code description of the Global Region to which the Trading partners domicile country belongs. There is a defined structure: Global, Sub Region/Domicile Country.';
+   COMMENT ON COLUMN "REVENUE_DM"."TRADING_PARTNER_DIM"."SUB_REGION_CODE" IS 'Code of the Sub-Region to which the Trading partners domicile country belongs. There is a defined structure: Global, Sub Region/Domicile Country.';
+   COMMENT ON COLUMN "REVENUE_DM"."TRADING_PARTNER_DIM"."SUB_REGION_DSC" IS 'Code description of the Sub-Region to which the Trading partners domicile country belongs. There is a defined structure: Global, Sub Region/Domicile Country.';
+   COMMENT ON COLUMN "REVENUE_DM"."TRADING_PARTNER_DIM"."DOMICILE_CODE" IS 'Domicile country code.';
+   COMMENT ON COLUMN "REVENUE_DM"."TRADING_PARTNER_DIM"."DOMICILE_DSC" IS 'Domicile country code description.';
+   COMMENT ON COLUMN "REVENUE_DM"."TRADING_PARTNER_DIM"."SOURCE_SYSTEM_CODE" IS 'code that indentifies the source reinsurance application from which the information originated.';
+   COMMENT ON COLUMN "REVENUE_DM"."TRADING_PARTNER_DIM"."TP_ULT_PARENT_ID" IS 'Name and Address id of the top level entity in the group structure.';
+   COMMENT ON COLUMN "REVENUE_DM"."TRADING_PARTNER_DIM"."TP_PARENT_ID" IS 'Name and Address id of the parent entity/company.';
+   COMMENT ON COLUMN "REVENUE_DM"."TRADING_PARTNER_DIM"."TP_ID" IS 'Name and Address id of the entity/company.';
+   COMMENT ON COLUMN "REVENUE_DM"."TRADING_PARTNER_DIM"."CREATED_DT" IS 'Date that the record was created in the datamart';
+   COMMENT ON COLUMN "REVENUE_DM"."TRADING_PARTNER_DIM"."UPDATE_DT" IS 'Date that the record was updated in the datamart';
+   COMMENT ON COLUMN "REVENUE_DM"."TRADING_PARTNER_DIM"."TP_ACCT_CODE_TYPE" IS 'Description of the code that indentifies to which application the account code belongs.';
+   COMMENT ON COLUMN "REVENUE_DM"."TRADING_PARTNER_DIM"."TP_ACCT_CODE_TYPE_DSC" IS 'Trading partner account code type description';
+   COMMENT ON COLUMN "REVENUE_DM"."TRADING_PARTNER_DIM"."TP_ULT_PAR_SEGMENTATION_CODE" IS 'G (Global) is at Ult Parent Level, others are on TP level';
+--------------------------------------------------------
+--  DDL for Table TRANSACTION_DIM
+--------------------------------------------------------
+
+  CREATE TABLE "REVENUE_DM"."TRANSACTION_DIM" 
+   (	"TRANSACTION_DIM_ID" NUMBER, 
+	"TRANSACTION_TYPE_CODE" VARCHAR2(35 BYTE), 
+	"TRANSACTION_TYPE_DSC" VARCHAR2(65 BYTE), 
+	"TRANSACTION_CATEGORY_CODE" VARCHAR2(35 BYTE), 
+	"TRANSACTION_CATEGORY_DSC" VARCHAR2(65 BYTE), 
+	"CREATED_DT" DATE, 
+	"UPDATE_DT" DATE, 
+	"TRANSACTION_SOURCE_CODE" VARCHAR2(15 BYTE), 
+	"TRANSACTION_SOURCE_REVENUE_GRP" VARCHAR2(35 BYTE), 
+	"TRANSACTION_SOURCE_REVENUE_DSC" VARCHAR2(65 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS NOLOGGING
+  STORAGE(INITIAL 2097152 NEXT 2097152 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_TBS_2" ;
+
+   COMMENT ON COLUMN "REVENUE_DM"."TRANSACTION_DIM"."TRANSACTION_DIM_ID" IS 'Primary Key to table TRANSACTION_DIM';
+   COMMENT ON COLUMN "REVENUE_DM"."TRANSACTION_DIM"."TRANSACTION_TYPE_CODE" IS 'Type of premium transaction code, based on the ER Revenue, and Premium and Claim dimensions. ';
+   COMMENT ON COLUMN "REVENUE_DM"."TRANSACTION_DIM"."TRANSACTION_TYPE_DSC" IS 'Textual description of the type of premium transaction code, based on the ER Revenue, and Premium and Claim dimension. For example: Minimum and Deposit Premium';
+   COMMENT ON COLUMN "REVENUE_DM"."TRANSACTION_DIM"."TRANSACTION_CATEGORY_CODE" IS 'Transactions Types are group into  a Transaction Category,  based on the ER Revenue, and Premium and Claim dimensionsTransaction  category. ';
+   COMMENT ON COLUMN "REVENUE_DM"."TRANSACTION_DIM"."TRANSACTION_CATEGORY_DSC" IS 'Textual description of the Transaction category. Transactions Types are group into Transaction Categories,  based on the ER Revenue, and Premium and Claim dimensions. For example Contractural Premium.';
+   COMMENT ON COLUMN "REVENUE_DM"."TRANSACTION_DIM"."CREATED_DT" IS 'Date that the record was created in the datamart';
+   COMMENT ON COLUMN "REVENUE_DM"."TRANSACTION_DIM"."UPDATE_DT" IS 'Date that the record was updated in the datamart';
+   COMMENT ON COLUMN "REVENUE_DM"."TRANSACTION_DIM"."TRANSACTION_SOURCE_CODE" IS 'The transaction code type as it was entered in the souce system (i.e. GRAIL, TWINS) ';
+--------------------------------------------------------
+--  DDL for Index PROF_CTR_DIM_PROFIT_CODE_IDX
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REVENUE_DM"."PROF_CTR_DIM_PROFIT_CODE_IDX" ON "REVENUE_DM"."PROFIT_CENTER_DIM" ("PROFIT_CODE") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index PK_PROFIT_CENTER_DIM
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REVENUE_DM"."PK_PROFIT_CENTER_DIM" ON "REVENUE_DM"."PROFIT_CENTER_DIM" ("PROFIT_CENTER_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index PROFIT_CTR_REG_CODE_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."PROFIT_CTR_REG_CODE_IDX" ON "REVENUE_DM"."PROFIT_CENTER_DIM" ("REGION_CODE") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index PROF_CTR_DIM_UC
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REVENUE_DM"."PROF_CTR_DIM_UC" ON "REVENUE_DM"."PROFIT_CENTER_DIM" ("PROFIT_CODE", "EFF_DT", "END_DT") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index PROFIT_CTR_SUM_REG_CODE_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."PROFIT_CTR_SUM_REG_CODE_IDX" ON "REVENUE_DM"."PROFIT_CENTER_DIM" ("SUMMARY_REGION_CODE") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_RECOG_DTE_DIM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_RECOG_DTE_DIM_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("RECOGNIZED_DATE_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_RECOG_DTE_CED_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_RECOG_DTE_CED_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("RECOGNIZED_DATE_DIM_ID", "CEDENT_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index FK_ACTUAL_RESTATE_DIM_ID_IX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."FK_ACTUAL_RESTATE_DIM_ID_IX" ON "REVENUE_DM"."REVENUE_FACT" ("ACTUAL_RESTATE_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 2097152 NEXT 2097152 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index PK_REVENUE_FACT
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REVENUE_DM"."PK_REVENUE_FACT" ON "REVENUE_DM"."REVENUE_FACT" ("REVENUE_FACT_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_ACCT_DTE_DIM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_ACCT_DTE_DIM_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("ACCOUNTING_DATE_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_AE_BRK_DIM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_AE_BRK_DIM_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("AE_BROKER_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_BUS_CLAS_DIM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_BUS_CLAS_DIM_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("BUSINESS_CLASSIFICATION_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_CED_DIM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_CED_DIM_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("CEDENT_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_CED_MAN_MBR_DIM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_CED_MAN_MBR_DIM_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("CEDENT_MANAGING_MEMBER_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_CED_THR_PTY_BRK_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_CED_THR_PTY_BRK_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("CEDENT_THIRD_PTY_BROKER_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_CONT_CLASS_DIM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_CONT_CLASS_DIM_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("CONTRACT_CLASSIFICATION_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_CON_PC_CED_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_CON_PC_CED_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("CONTRACT_DIM_ID", "CEDENT_DIM_ID", "CURRENT_PROFIT_CENTER_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_ER_SOURCE_KEY
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_ER_SOURCE_KEY" ON "REVENUE_DM"."REVENUE_FACT" ("ER_SOURCE_KEY") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_ER_SOURCE_KEY2
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_ER_SOURCE_KEY2" ON "REVENUE_DM"."REVENUE_FACT" ("ER_SOURCE_KEY", "DD_APPLICATION_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_ORG_PRF_CTR_DIM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_ORG_PRF_CTR_DIM_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("ORIGINAL_PROFIT_CENTER_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_PERIL_DIM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_PERIL_DIM_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("PERIL_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_PRF_CTR_DIM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_PRF_CTR_DIM_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("CURRENT_PROFIT_CENTER_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_PROD_BRK_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_PROD_BRK_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("PRODUCING_BROKER_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_REG_CODE_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_REG_CODE_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("CONTRACT_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_REINS_DIM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_REINS_DIM_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("REINSURER_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_REINS_THR_PTY_BRK_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_REINS_THR_PTY_BRK_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("REINSURER_THIRD_PTY_BROKER_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_REIN_MAN_MBR_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_REIN_MAN_MBR_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("REINSURER_MANAGING_MEMBER_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_REV_DTE_DIM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_REV_DTE_DIM_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("REVENUE_DATE_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_REV_TYPE_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_REV_TYPE_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("REVENUE_TYPE_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_RISK_LOC_DIM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_RISK_LOC_DIM_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("RISK_LOCATION_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_SOURCE_DIM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_SOURCE_DIM_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("SOURCE_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_SVC_BUR_ID
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_SVC_BUR_ID" ON "REVENUE_DM"."REVENUE_FACT" ("SERVICE_BUREAU_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_TRANS_DIM_ID_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_TRANS_DIM_ID_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("TRANSACTION_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_TRN_DTE_DIM_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_TRN_DTE_DIM_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("TRANS_DATE_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_REV_DTE_CED_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_REV_DTE_CED_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("REVENUE_DATE_DIM_ID", "CEDENT_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_FACT_CREATED_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_FACT_CREATED_IDX" ON "REVENUE_DM"."REVENUE_FACT" ("CREATED_DT", "DD_APPLICATION_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_TYPE_DIM_UC
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REVENUE_DM"."REV_TYPE_DIM_UC" ON "REVENUE_DM"."REVENUE_TYPE_DIM" ("REVENUE_CATEGORY_CODE", "REVENUE_TYPE_CODE") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index REV_TYP_DIME_REV_TY_CDE_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."REV_TYP_DIME_REV_TY_CDE_IDX" ON "REVENUE_DM"."REVENUE_TYPE_DIM" ("REVENUE_TYPE_CODE") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index PK_REVENUE_TYPE_DIM
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REVENUE_DM"."PK_REVENUE_TYPE_DIM" ON "REVENUE_DM"."REVENUE_TYPE_DIM" ("REVENUE_TYPE_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index TRA_PAR_DIM_TP_TP_ULT_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."TRA_PAR_DIM_TP_TP_ULT_IDX" ON "REVENUE_DM"."TRADING_PARTNER_DIM" ("TP_ID", "TP_ULT_PARENT_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index X$TRDPART_ULT_PAR_DIM_IDX
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REVENUE_DM"."X$TRDPART_ULT_PAR_DIM_IDX" ON "REVENUE_DM"."TRADING_PARTNER_DIM" ("TP_ULT_PARENT_ID", "TP_ID", "TP_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index TRA_PAR_DIM_TP_UL_PAR_NME_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."TRA_PAR_DIM_TP_UL_PAR_NME_IDX" ON "REVENUE_DM"."TRADING_PARTNER_DIM" ("TP_ULT_PARENT_NAME") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index TRA_PAR_DIM_TP_LGL_NME_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."TRA_PAR_DIM_TP_LGL_NME_IDX" ON "REVENUE_DM"."TRADING_PARTNER_DIM" ("TP_LEGAL_NAME") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index TRA_PAR_DIM_TP_ID_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."TRA_PAR_DIM_TP_ID_IDX" ON "REVENUE_DM"."TRADING_PARTNER_DIM" ("TP_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index PK_TRADING_PARTNER_DIM
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REVENUE_DM"."PK_TRADING_PARTNER_DIM" ON "REVENUE_DM"."TRADING_PARTNER_DIM" ("TP_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index TRADING_PART_DIM_TP_ACCT_IDX
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REVENUE_DM"."TRADING_PART_DIM_TP_ACCT_IDX" ON "REVENUE_DM"."TRADING_PARTNER_DIM" ("TP_ACCT_CODE", "TP_ACCT_CODE_TYPE") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index TRA_PAR_DIM_TP_UL_PAR_SEG_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."TRA_PAR_DIM_TP_UL_PAR_SEG_IDX" ON "REVENUE_DM"."TRADING_PARTNER_DIM" ("TP_ULT_PAR_SEGMENTATION_CODE") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index PK_TRANSACTION_DIM
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REVENUE_DM"."PK_TRANSACTION_DIM" ON "REVENUE_DM"."TRANSACTION_DIM" ("TRANSACTION_DIM_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index TRANSACTION_DIM_TYPE_CODE_IDX
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REVENUE_DM"."TRANSACTION_DIM_TYPE_CODE_IDX" ON "REVENUE_DM"."TRANSACTION_DIM" ("TRANSACTION_TYPE_CODE") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index TRANSACTION_DIM_UC
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REVENUE_DM"."TRANSACTION_DIM_UC" ON "REVENUE_DM"."TRANSACTION_DIM" ("TRANSACTION_TYPE_CODE", "TRANSACTION_CATEGORY_CODE") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  DDL for Index TRANS_DIM_TRAN_CAT_CDE_IDX
+--------------------------------------------------------
+
+  CREATE INDEX "REVENUE_DM"."TRANS_DIM_TRAN_CAT_CDE_IDX" ON "REVENUE_DM"."TRANSACTION_DIM" ("TRANSACTION_CATEGORY_CODE") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX" ;
+--------------------------------------------------------
+--  Constraints for Table PROFIT_CENTER_DIM
+--------------------------------------------------------
+
+  ALTER TABLE "REVENUE_DM"."PROFIT_CENTER_DIM" MODIFY ("SUMMARY_PROFIT_CENTER_DSC" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."PROFIT_CENTER_DIM" MODIFY ("SUMMARY_PROFIT_CENTER_CODE" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."PROFIT_CENTER_DIM" ADD CONSTRAINT "PK_PROFIT_CENTER_DIM" PRIMARY KEY ("PROFIT_CENTER_DIM_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX"  ENABLE;
+  ALTER TABLE "REVENUE_DM"."PROFIT_CENTER_DIM" MODIFY ("CREATED_DT" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."PROFIT_CENTER_DIM" MODIFY ("PROFIT_DSC" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."PROFIT_CENTER_DIM" MODIFY ("PROFIT_CODE" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."PROFIT_CENTER_DIM" MODIFY ("REGION_DSC" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."PROFIT_CENTER_DIM" MODIFY ("REGION_CODE" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."PROFIT_CENTER_DIM" MODIFY ("SUMMARY_REGION_DSC" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."PROFIT_CENTER_DIM" MODIFY ("SUMMARY_REGION_CODE" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."PROFIT_CENTER_DIM" MODIFY ("PROFIT_CENTER_DIM_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table REVENUE_FACT
+--------------------------------------------------------
+
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" ADD CONSTRAINT "PK_REVENUE_FACT" PRIMARY KEY ("REVENUE_FACT_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX"  ENABLE;
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" MODIFY ("SERVICE_BUREAU_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" MODIFY ("REINSURER_THIRD_PTY_BROKER_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" MODIFY ("CEDENT_THIRD_PTY_BROKER_DIM_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" MODIFY ("REINSURER_MANAGING_MEMBER_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" MODIFY ("CEDENT_MANAGING_MEMBER_DIM_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" MODIFY ("REINSURER_DIM_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" MODIFY ("CEDENT_DIM_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" MODIFY ("ORIGINAL_PROFIT_CENTER_DIM_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" MODIFY ("CURRENT_PROFIT_CENTER_DIM_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" MODIFY ("AE_BROKER_DIM_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" MODIFY ("PRODUCING_BROKER_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" MODIFY ("REVENUE_DATE_DIM_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" MODIFY ("ACCOUNTING_DATE_DIM_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" MODIFY ("TRANS_DATE_DIM_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" MODIFY ("PERIL_DIM_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" MODIFY ("CONTRACT_CLASSIFICATION_DIM_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" MODIFY ("SOURCE_OVERRIDE_DIM_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" MODIFY ("RISK_LOCATION_DIM_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" MODIFY ("BUSINESS_CLASSIFICATION_DIM_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" MODIFY ("TRANSACTION_DIM_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" MODIFY ("REVENUE_TYPE_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" MODIFY ("CONTRACT_DIM_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" MODIFY ("REVENUE_FACT_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table REVENUE_TYPE_DIM
+--------------------------------------------------------
+
+  ALTER TABLE "REVENUE_DM"."REVENUE_TYPE_DIM" ADD CONSTRAINT "PK_REVENUE_TYPE_DIM" PRIMARY KEY ("REVENUE_TYPE_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX"  ENABLE;
+  ALTER TABLE "REVENUE_DM"."REVENUE_TYPE_DIM" MODIFY ("CREATED_DT" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_TYPE_DIM" MODIFY ("REVENUE_TYPE_DSC" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_TYPE_DIM" MODIFY ("REVENUE_TYPE_CODE" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_TYPE_DIM" MODIFY ("REVENUE_CATEGORY_DSC" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_TYPE_DIM" MODIFY ("REVENUE_CATEGORY_CODE" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."REVENUE_TYPE_DIM" MODIFY ("REVENUE_TYPE_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table TRADING_PARTNER_DIM
+--------------------------------------------------------
+
+  ALTER TABLE "REVENUE_DM"."TRADING_PARTNER_DIM" ADD CONSTRAINT "PK_TRADING_PARTNER_DIM" PRIMARY KEY ("TP_DIM_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX"  ENABLE;
+  ALTER TABLE "REVENUE_DM"."TRADING_PARTNER_DIM" MODIFY ("CREATED_DT" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."TRADING_PARTNER_DIM" MODIFY ("TP_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."TRADING_PARTNER_DIM" MODIFY ("SOURCE_SYSTEM_CODE" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."TRADING_PARTNER_DIM" MODIFY ("DOMICILE_DSC" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."TRADING_PARTNER_DIM" MODIFY ("DOMICILE_CODE" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."TRADING_PARTNER_DIM" MODIFY ("SUB_REGION_DSC" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."TRADING_PARTNER_DIM" MODIFY ("SUB_REGION_CODE" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."TRADING_PARTNER_DIM" MODIFY ("GLOBAL_REGION_DSC" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."TRADING_PARTNER_DIM" MODIFY ("GLOBAL_REGION_CODE" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."TRADING_PARTNER_DIM" MODIFY ("TP_ACCT_CODE" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."TRADING_PARTNER_DIM" MODIFY ("TP_NAME" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."TRADING_PARTNER_DIM" MODIFY ("TP_DIM_ID" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."TRADING_PARTNER_DIM" MODIFY ("TP_ACCT_CODE_TYPE_DSC" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."TRADING_PARTNER_DIM" MODIFY ("TP_ACCT_CODE_TYPE" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table TRANSACTION_DIM
+--------------------------------------------------------
+
+  ALTER TABLE "REVENUE_DM"."TRANSACTION_DIM" ADD CONSTRAINT "PK_TRANSACTION_DIM" PRIMARY KEY ("TRANSACTION_DIM_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS NOLOGGING 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "REVENUE_DM_IDX"  ENABLE;
+  ALTER TABLE "REVENUE_DM"."TRANSACTION_DIM" MODIFY ("CREATED_DT" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."TRANSACTION_DIM" MODIFY ("TRANSACTION_CATEGORY_DSC" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."TRANSACTION_DIM" MODIFY ("TRANSACTION_CATEGORY_CODE" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."TRANSACTION_DIM" MODIFY ("TRANSACTION_TYPE_DSC" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."TRANSACTION_DIM" MODIFY ("TRANSACTION_TYPE_CODE" NOT NULL ENABLE);
+  ALTER TABLE "REVENUE_DM"."TRANSACTION_DIM" MODIFY ("TRANSACTION_DIM_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Ref Constraints for Table REVENUE_FACT
+--------------------------------------------------------
+
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" ADD CONSTRAINT "FK_ACTUAL_RESTATE_DIM_ID" FOREIGN KEY ("ACTUAL_RESTATE_DIM_ID")
+	  REFERENCES "REVENUE_DM"."ACTUAL_RESTATE_DIM" ("ACTUAL_RESTATE_DIM_ID") ENABLE;
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" ADD CONSTRAINT "FK_BUSINESS_CLASSIFICATION_DI7" FOREIGN KEY ("BUSINESS_CLASSIFICATION_DIM_ID")
+	  REFERENCES "REVENUE_DM"."BUSINESS_CLASSIFICATION_DIM" ("BUSINESS_CLASSIFICATION_DIM_ID") ENABLE;
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" ADD CONSTRAINT "FK_CONTRACT_CLASSIFICATION_DI9" FOREIGN KEY ("CONTRACT_CLASSIFICATION_DIM_ID")
+	  REFERENCES "REVENUE_DM"."CONTRACT_CLASSIFICATION_DIM" ("CONTRACT_CLASSIFICATION_DIM_ID") ENABLE;
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" ADD CONSTRAINT "FK_CONTRACT_DIM5" FOREIGN KEY ("CONTRACT_DIM_ID")
+	  REFERENCES "REVENUE_DM"."CONTRACT_DIM" ("CONTRACT_DIM_ID") ENABLE;
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" ADD CONSTRAINT "FK_DATE_DIM31" FOREIGN KEY ("ACCOUNTING_DATE_DIM_ID")
+	  REFERENCES "REVENUE_DM"."DATE_DIM" ("DATE_DIM_ID") ENABLE;
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" ADD CONSTRAINT "FK_DATE_DIM32" FOREIGN KEY ("TRANS_DATE_DIM_ID")
+	  REFERENCES "REVENUE_DM"."DATE_DIM" ("DATE_DIM_ID") ENABLE;
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" ADD CONSTRAINT "FK_DATE_DIM55" FOREIGN KEY ("REVENUE_DATE_DIM_ID")
+	  REFERENCES "REVENUE_DM"."DATE_DIM" ("DATE_DIM_ID") ENABLE;
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" ADD CONSTRAINT "FK_GC_BROKER_DIM34" FOREIGN KEY ("AE_BROKER_DIM_ID")
+	  REFERENCES "REVENUE_DM"."STAFF_DIM" ("STAFF_DIM_ID") ENABLE;
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" ADD CONSTRAINT "FK_GC_BROKER_DIM51" FOREIGN KEY ("PRODUCING_BROKER_ID")
+	  REFERENCES "REVENUE_DM"."STAFF_DIM" ("STAFF_DIM_ID") ENABLE;
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" ADD CONSTRAINT "FK_PERIL_DIM16" FOREIGN KEY ("PERIL_DIM_ID")
+	  REFERENCES "REVENUE_DM"."PERIL_DIM" ("PERIL_DIM_ID") ENABLE;
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" ADD CONSTRAINT "FK_PROFIT_CENTER_DIM35" FOREIGN KEY ("CURRENT_PROFIT_CENTER_DIM_ID")
+	  REFERENCES "REVENUE_DM"."PROFIT_CENTER_DIM" ("PROFIT_CENTER_DIM_ID") ENABLE;
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" ADD CONSTRAINT "FK_PROFIT_CENTER_DIM36" FOREIGN KEY ("ORIGINAL_PROFIT_CENTER_DIM_ID")
+	  REFERENCES "REVENUE_DM"."PROFIT_CENTER_DIM" ("PROFIT_CENTER_DIM_ID") ENABLE;
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" ADD CONSTRAINT "FK_REVENUE_TYPE_DIM50" FOREIGN KEY ("REVENUE_TYPE_ID")
+	  REFERENCES "REVENUE_DM"."REVENUE_TYPE_DIM" ("REVENUE_TYPE_ID") ENABLE;
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" ADD CONSTRAINT "FK_RISK_LOCATION_DIM8" FOREIGN KEY ("RISK_LOCATION_DIM_ID")
+	  REFERENCES "REVENUE_DM"."RISK_LOCATION_DIM" ("RISK_LOCATION_DIM_ID") ENABLE;
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" ADD CONSTRAINT "FK_TRADING_PARTNER_DIM45" FOREIGN KEY ("REINSURER_DIM_ID")
+	  REFERENCES "REVENUE_DM"."TRADING_PARTNER_DIM" ("TP_DIM_ID") ENABLE;
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" ADD CONSTRAINT "FK_TRADING_PARTNER_DIM46" FOREIGN KEY ("CEDENT_DIM_ID")
+	  REFERENCES "REVENUE_DM"."TRADING_PARTNER_DIM" ("TP_DIM_ID") ENABLE;
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" ADD CONSTRAINT "FK_TRADING_PARTNER_DIM47" FOREIGN KEY ("CEDENT_MANAGING_MEMBER_DIM_ID")
+	  REFERENCES "REVENUE_DM"."TRADING_PARTNER_DIM" ("TP_DIM_ID") ENABLE;
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" ADD CONSTRAINT "FK_TRADING_PARTNER_DIM48" FOREIGN KEY ("CEDENT_THIRD_PTY_BROKER_DIM_ID")
+	  REFERENCES "REVENUE_DM"."TRADING_PARTNER_DIM" ("TP_DIM_ID") ENABLE;
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" ADD CONSTRAINT "FK_TRADING_PARTNER_DIM52" FOREIGN KEY ("REINSURER_THIRD_PTY_BROKER_ID")
+	  REFERENCES "REVENUE_DM"."TRADING_PARTNER_DIM" ("TP_DIM_ID") ENABLE;
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" ADD CONSTRAINT "FK_TRADING_PARTNER_DIM53" FOREIGN KEY ("REINSURER_MANAGING_MEMBER_ID")
+	  REFERENCES "REVENUE_DM"."TRADING_PARTNER_DIM" ("TP_DIM_ID") ENABLE;
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" ADD CONSTRAINT "FK_TRADING_PARTNER_DIM54" FOREIGN KEY ("SERVICE_BUREAU_ID")
+	  REFERENCES "REVENUE_DM"."TRADING_PARTNER_DIM" ("TP_DIM_ID") ENABLE;
+  ALTER TABLE "REVENUE_DM"."REVENUE_FACT" ADD CONSTRAINT "FK_TRANSACTION_DIM6" FOREIGN KEY ("TRANSACTION_DIM_ID")
+	  REFERENCES "REVENUE_DM"."TRANSACTION_DIM" ("TRANSACTION_DIM_ID") ENABLE;
+
+
+--------------------------------------------------------
+--  DDL for Table CLVR_LEVEL0_EXTRACT
+--------------------------------------------------------
+
+  CREATE TABLE "EPMAHYPER"."CLVR_LEVEL0_EXTRACT" 
+   (	"CLVR_CLIENT_MBR" VARCHAR2(80 BYTE), 
+	"CLVR_CONTRACT_MBR" VARCHAR2(80 BYTE), 
+	"CLVR_ENTITY_MBR" VARCHAR2(80 BYTE), 
+	"CLVR_CURRENCY_TYPE_MBR" VARCHAR2(80 BYTE), 
+	"CLVR_SCENARIO_MBR" VARCHAR2(80 BYTE), 
+	"CLVR_VERSION_MBR" VARCHAR2(80 BYTE), 
+	"CLVR_FISCAL_YEAR_MBR" VARCHAR2(80 BYTE), 
+	"CLVR_ACCOUNT_MBR" VARCHAR2(80 BYTE), 
+	"BEGBAL_AMT" NUMBER, 
+	"JAN_AMT" NUMBER, 
+	"FEB_AMT" NUMBER, 
+	"MAR_AMT" NUMBER, 
+	"APR_AMT" NUMBER, 
+	"MAY_AMT" NUMBER, 
+	"JUN_AMT" NUMBER, 
+	"JUL_AMT" NUMBER, 
+	"AUG_AMT" NUMBER, 
+	"SEP_AMT" NUMBER, 
+	"OCT_AMT" NUMBER, 
+	"NOV_AMT" NUMBER, 
+	"DEC_AMT" NUMBER, 
+	"CLVR_SOURCE_MBR" VARCHAR2(80 BYTE), 
+	"REV_DM_EARNED_LEDGER_CURR_CODE" VARCHAR2(3 BYTE), 
+	"REV_DM_DD_ER_SECTION_ID" NUMBER, 
+	"CONTRACT_DIM_ID" NUMBER, 
+	"REV_DM_CEDENT_DIM_ID" NUMBER
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS NOLOGGING
+  TABLESPACE "EPMAHYPER_TBS" ;
+
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."CLVR_CONTRACT_MBR" IS 'CONTRACT member from CLVR cube, sourced via DIM import into Oracle from Essbase';
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."CLVR_ENTITY_MBR" IS 'ENTITY member from CLVR cube, sourced via DIM import into Oracle from Essbase';
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."CLVR_CURRENCY_TYPE_MBR" IS 'CURRENCY_TYPE member from CLVR cube, sourced via DIM import into Oracle from Essbase';
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."CLVR_SCENARIO_MBR" IS 'SCENARIO member from CLVR cube, sourced via DIM import into Oracle from Essbase';
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."CLVR_VERSION_MBR" IS 'VERSION member from CLVR cube, sourced via DIM import into Oracle from Essbase';
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."CLVR_FISCAL_YEAR_MBR" IS 'FISCAL_YEAR member from CLVR cube, sourced via DIM import into Oracle from Essbase';
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."CLVR_ACCOUNT_MBR" IS 'ACCOUNT member from CLVR cube, sourced via DIM import into Oracle from Essbase';
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."BEGBAL_AMT" IS 'Data value for month';
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."JAN_AMT" IS 'Data value for month';
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."FEB_AMT" IS 'Data value for month';
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."MAR_AMT" IS 'Data value for month';
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."APR_AMT" IS 'Data value for month';
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."MAY_AMT" IS 'Data value for month';
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."JUN_AMT" IS 'Data value for month';
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."JUL_AMT" IS 'Data value for month';
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."AUG_AMT" IS 'Data value for month';
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."SEP_AMT" IS 'Data value for month';
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."OCT_AMT" IS 'Data value for month';
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."NOV_AMT" IS 'Data value for month';
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."DEC_AMT" IS 'Data value for month';
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."CLVR_SOURCE_MBR" IS 'SOURCE member from CLVR cube, sourced via DIM import into Oracle from Essbase';
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."REV_DM_EARNED_LEDGER_CURR_CODE" IS 'Used for keying to new contract names upon data load. ';
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."REV_DM_DD_ER_SECTION_ID" IS 'Used for keying to new contract names upon data load. ';
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."CONTRACT_DIM_ID" IS 'Used for keying to new contract names upon data load.  Does not necessarily correlate to REV_DM values.';
+   COMMENT ON COLUMN "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"."REV_DM_CEDENT_DIM_ID" IS 'Used for keying to new contract names upon data load. ';
+   COMMENT ON TABLE "EPMAHYPER"."CLVR_LEVEL0_EXTRACT"  IS 'Data exported from cube during nightly process to be imported back in again';
+
+--------------------------------------------------------
+--  DDL for Table ER_GL_PROFIT_CENTER
+--------------------------------------------------------
+
+  CREATE TABLE "ERCROSS"."ER_GL_PROFIT_CENTER" 
+   (	"TBL_CODE_ID" NUMBER, 
+	"SHORT_CODE" VARCHAR2(25 BYTE), 
+	"LONG_CODE" VARCHAR2(100 BYTE), 
+	"TBL_CODE_DESCRIPTION" VARCHAR2(250 BYTE), 
+	"FK_APPLICATION_ID" NUMBER, 
+	"ACTIVE_IND" VARCHAR2(1 BYTE), 
+	"CREATED_DATE_TIME" DATE, 
+	"PROGRAM_CREATED" VARCHAR2(60 BYTE), 
+	"UPDATED_DATE_TIME" DATE, 
+	"PROGRAM_UPDATED" VARCHAR2(60 BYTE), 
+	"TBL_CODE_DESCRIPTION_ESP" VARCHAR2(250 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 524288 NEXT 524288 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "EXPER_TBS" ;
+--------------------------------------------------------
+--  DDL for Index ER_GL_PROFIT_CENTER$UK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "ERCROSS"."ER_GL_PROFIT_CENTER$UK" ON "ERCROSS"."ER_GL_PROFIT_CENTER" ("SHORT_CODE") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 524288 NEXT 524288 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "EXPER_TBS" ;
+--------------------------------------------------------
+--  DDL for Index FK_ER_GL_PROFIT_CENTER_IX
+--------------------------------------------------------
+
+  CREATE INDEX "ERCROSS"."FK_ER_GL_PROFIT_CENTER_IX" ON "ERCROSS"."ER_GL_PROFIT_CENTER" ("FK_APPLICATION_ID") 
+  PCTFREE 2 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "EXPER_IDX_TBS" 
+  PARALLEL 5 ;
+--------------------------------------------------------
+--  DDL for Index PK_ER_GL_PROFIT_CENTER
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "ERCROSS"."PK_ER_GL_PROFIT_CENTER" ON "ERCROSS"."ER_GL_PROFIT_CENTER" ("TBL_CODE_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 524288 NEXT 524288 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "EXPER_TBS" ;
+--------------------------------------------------------
+--  Constraints for Table ER_GL_PROFIT_CENTER
+--------------------------------------------------------
+
+  ALTER TABLE "ERCROSS"."ER_GL_PROFIT_CENTER" ADD CONSTRAINT "ER_GL_PROFIT_CENTER$UK" UNIQUE ("SHORT_CODE")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 524288 NEXT 524288 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "EXPER_TBS"  ENABLE;
+  ALTER TABLE "ERCROSS"."ER_GL_PROFIT_CENTER" ADD CONSTRAINT "PK_ER_GL_PROFIT_CENTER" PRIMARY KEY ("TBL_CODE_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 524288 NEXT 524288 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "EXPER_TBS"  ENABLE;
+  ALTER TABLE "ERCROSS"."ER_GL_PROFIT_CENTER" MODIFY ("FK_APPLICATION_ID" NOT NULL ENABLE);
+  ALTER TABLE "ERCROSS"."ER_GL_PROFIT_CENTER" MODIFY ("SHORT_CODE" NOT NULL ENABLE);
+  ALTER TABLE "ERCROSS"."ER_GL_PROFIT_CENTER" MODIFY ("TBL_CODE_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Ref Constraints for Table ER_GL_PROFIT_CENTER
+--------------------------------------------------------
+
+  ALTER TABLE "ERCROSS"."ER_GL_PROFIT_CENTER" ADD CONSTRAINT "FK_ER_GL_PROFIT_CENTER" FOREIGN KEY ("FK_APPLICATION_ID")
+	  REFERENCES "ERCROSS"."ER_APPLICATION" ("APPLICATION_ID") ENABLE;
+
+
